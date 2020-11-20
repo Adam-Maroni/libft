@@ -1,5 +1,5 @@
 CC = clang
-FLAGS = -Wall -Werror -Wextra
+FLAGS = -Wall -Werror -Wextra -lbsd #(strlcat et strlcpy)
 SRC = test_libft.c
 OUT = test_libft
 

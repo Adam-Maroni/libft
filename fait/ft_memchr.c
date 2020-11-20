@@ -1,17 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memccpy.c                                       :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amaroni <amaroni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/20 13:34:26 by amaroni           #+#    #+#             */
-/*   Updated: 2020/11/20 15:03:24 by amaroni          ###   ########.fr       */
+/*   Created: 2020/11/20 16:24:49 by amaroni           #+#    #+#             */
+/*   Updated: 2020/11/20 17:30:51 by amaroni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	*ft_memccpy(void *dest, void *src, int c, int n)
+void	*ft_memchr(void *s, int c, size_t n)
 {
-	while (n > 0)
+	size_t i;
 
+	i = 0;
+	while (i < n)
+	{
+		if (*((char*)s + i) == (char)c)
+			return (s + i);
+		else
+			i++;
+	}
+	return (NULL);
 }

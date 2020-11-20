@@ -1,17 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memccpy.c                                       :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amaroni <amaroni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/20 13:34:26 by amaroni           #+#    #+#             */
-/*   Updated: 2020/11/20 15:03:24 by amaroni          ###   ########.fr       */
+/*   Created: 2020/11/20 11:46:54 by amaroni           #+#    #+#             */
+/*   Updated: 2020/11/20 12:08:34 by amaroni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	*ft_memccpy(void *dest, void *src, int c, int n)
+unsigned long	ft_strlen(char *s)
 {
-	while (n > 0)
+	unsigned long rt;
 
+	rt = 0;
+	while (*(s + rt) != '\0')
+		rt++;
+	return (rt);
 }
