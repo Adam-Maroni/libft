@@ -22,7 +22,9 @@
 //#define FT_MEMCCPY -> ECHEC
 //#define FT_MEMCHR
 //#define FT_BZERO
-#define FT_STRLCAT
+//#define FT_STRLCAT
+//#define FT_MEMMOVE
+#define FT_STRNSTR
 
 //=========================FT_MEMSET==========================
 #ifdef FT_MEMSET
@@ -890,8 +892,166 @@ void test_ft_strlcat(){
 
 
 
+//================== FT_MEMMOVE ===================
+#ifdef FT_MEMMOVE
+#include "../ft_memmove.c"
+void test_ft_memmove(){
+	printf("TEST DE FT_MEMMOVE\n");
+
+	char *dest;
+	char *src;
+	int n;
+
+	printf("================== CAS 1 ===================\n");
+	//dest suffisamment grand
+	n = 3;
+	src = "abcde";
+	dest = (char*)malloc((strlen(src)+1)*sizeof(char));
+	printf("dest = %s , src = %s , n = %d\n",dest,src,n);
+	printf("ATTENDU = %s ", memmove(dest,src,n));
+	free(dest);
+	dest = (char*)calloc(1,(strlen(src)+1)*sizeof(char));
+	printf(", OBTENU = %s\n",ft_memmove(dest,src,n));
+	printf("============================================\n");
+
+	printf("\n");
+	printf("================== CAS 2 ===================\n");
+	//dest suffisamment grand, n est plus grand que strlen(src)
+	src = "abcde";
+	n = strlen(src) + 2;
+	dest = (char*)malloc(2*(strlen(src)+1)*sizeof(char));
+	printf("dest = %s , src = %s , n = %d\n",dest,src,n);
+	printf("ATTENDU = %s ", memmove(dest,src,n));
+	free(dest);
+	dest = (char*)calloc(2,(strlen(src)+1)*sizeof(char));
+	printf(", OBTENU = %s\n",ft_memmove(dest,src,n));
+	printf("============================================\n");
+	printf("\n");
+
+
+
+	printf("================== CAS 3 ===================\n");
+	//dest trop petit
+	src = "abcde";
+	n = 3;
+	dest = (char*)malloc(sizeof(char)*(n-1));
+	printf("dest = %s , src = %s , n = %d\n",dest,src,n);
+	printf("ATTENDU = %s ", memmove(dest,src,n));
+	free(dest);
+	dest = (char*)malloc(sizeof(char)*(n-1));
+	printf(", OBTENU = %s\n",ft_memmove(dest,src,n));
+	printf("============================================\n");
+	printf("\n");
+	printf("================== CAS 4 ===================\n");
+	printf("============================================\n");
+	printf("\n");
+	printf("================== CAS 5 ===================\n");
+	printf("============================================\n");
+	printf("\n");
+	printf("================== CAS 6 ===================\n");
+	printf("============================================\n");
+	printf("\n");
+	printf("================== CAS 7 ===================\n");
+	printf("============================================\n");
+	printf("\n");
+	printf("================== CAS 8 ===================\n");
+	printf("============================================\n");
+	printf("\n");
+	printf("================== CAS 9 ===================\n");
+	printf("============================================\n");
+	printf("\n");
+	printf("================== CAS 10 ===================\n");
+	printf("============================================\n");
+}
+#endif
+//===============================================
+
+
+
+//================== FT_STRNSTR ===================
+#ifdef FT_STRNSTR
+#include "../ft_strnstr.c"
+void test_ft_strnstr(){
+	printf("TEST DE FT_STRNSTR\n");
+	char *big;
+	char *little;
+	size_t len;
+
+	printf("================== CAS 1 ===================\n");
+	big = "Bonjour Bonjour hello";
+	little = "Bonjour";
+	len = strlen(big);
+	printf("big = %s, little = %s, len = %zu\n",big,little,len);
+	printf("ATTENDU = %s , OBTENU = %s\n",strnstr(big,little,len),ft_strnstr(big,little,len));
+	big = NULL;
+	little = NULL;
+	len = 0;
+	printf("============================================\n");
+	printf("\n");
+	printf("================== CAS 2 ===================\n");
+	big = "Bonjour Bonjour hello";
+	little = "hello";
+	len = strlen(little);
+	printf("big = %s, little = %s, len = %zu\n",big,little,len);
+	printf("ATTENDU = %s , OBTENU = %s\n",strnstr(big,little,len),ft_strnstr(big,little,len));
+	big = NULL;
+	little = NULL;
+	len = 0;
+	printf("============================================\n");
+	printf("\n");
+	printf("================== CAS 3 ===================\n");
+	big = "Bonjour Bonjour hello";
+	little = "ha";
+	len = strlen(little);
+	printf("big = %s, little = %s, len = %zu\n",big,little,len);
+	printf("ATTENDU = %s , OBTENU = %s\n",strnstr(big,little,len),ft_strnstr(big,little,len));
+	big = NULL;
+	little = NULL;
+	len = 0;
+	printf("============================================\n");
+	printf("\n");
+	printf("================== CAS 4 ===================\n");
+	big = "Bonjour Bonjour hello";
+	little = "hello";
+	len = 0;
+	printf("big = %s, little = %s, len = %zu\n",big,little,len);
+	printf("ATTENDU = %s , OBTENU = %s\n",strnstr(big,little,len),ft_strnstr(big,little,len));
+	big = NULL;
+	little = NULL;
+	len = 0;
+	printf("============================================\n");
+	printf("\n");
+	printf("================== CAS 5 ===================\n");
+	big = "Bonjour Bonjour hello";
+	little = "";
+	len = strlen(big);
+	printf("big = %s, little = %s, len = %zu\n",big,little,len);
+	printf("ATTENDU = %s , OBTENU = %s\n",strnstr(big,little,len),ft_strnstr(big,little,len));
+	big = NULL;
+	little = NULL;
+	len = 0;
+	printf("============================================\n");
+	printf("\n");
+	printf("================== CAS 6 ===================\n");
+	printf("============================================\n");
+	printf("\n");
+	printf("================== CAS 7 ===================\n");
+	printf("============================================\n");
+	printf("\n");
+	printf("================== CAS 8 ===================\n");
+	printf("============================================\n");
+	printf("\n");
+	printf("================== CAS 9 ===================\n");
+	printf("============================================\n");
+	printf("\n");
+	printf("================== CAS 10 ===================\n");
+	printf("============================================\n");
+}
+#endif
+//===============================================
+
 
 int main(){
-	test_ft_strlcat();
+	test_ft_strnstr();
 	return 0;
 }

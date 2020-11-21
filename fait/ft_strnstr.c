@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amaroni <amaroni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/20 11:46:54 by amaroni           #+#    #+#             */
-/*   Updated: 2020/11/21 02:44:05 by amaroni          ###   ########.fr       */
+/*   Created: 2020/11/21 18:14:29 by amaroni           #+#    #+#             */
+/*   Updated: 2020/11/21 19:27:36 by amaroni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-unsigned long	ft_strlen(char *s)
+static long	ft_strlen(char *s)
 {
 	unsigned long rt;
 
@@ -20,31 +20,29 @@ unsigned long	ft_strlen(char *s)
 	return (rt);
 }
 
-size_t		ft_strlcat(char *dst, char *src, size_t size)
+char		*ft_strnstr(char *big, char *little, size_t len)
 {
-	size_t i;
-	size_t y;
-	size_t rt;
+	int		i;
+	int		y;
+	char	*first_occurence;
 
 	i = 0;
-	y = ft_strlen(dst);
-	rt = ft_strlen(dst) + ft_strlen(src);
-	while (y < size - 1)
+	y = 0;
+	if (ft_strlen(little) == 0)
+		return (big);
+	while (i <= (int)len)
 	{
-		*(dst + y) = *(src + i);
-		y++;
-		i++;
+		if (y == (int)ft_strlen(little))
+			return (first_occurence);
+		else if (*(big + i) == *(little + y))
+		{
+			if (y == 0)
+				first_occurence = (big + i);
+			i++;
+			y++;
+		}
+		else
+			i++;
 	}
-	*(dst + y) = '\0';
-	return (rt);
-}
-
-unsigned long	ft_strlen(char *s)
-{
-	unsigned long rt;
-
-	rt = 0;
-	while (*(s + rt) != '\0')
-		rt++;
-	return (rt);
+	return (NULL);
 }

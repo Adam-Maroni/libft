@@ -2,8 +2,8 @@
 #define VARIABLE
 //================== VARIABLE ===================
 #ifdef VARIABLE
-void test_variable(){
 #include "variable.c"
+void test_variable(){
 	printf("TEST DE VARIABLE"\n);
 	printf("================== CAS 1 ===================\n");
 	printf("============================================\n");
