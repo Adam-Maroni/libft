@@ -833,16 +833,40 @@ void test_ft_strlcat(){
 	#undef DST
 	printf("============================================\n");
 	printf("\n");
-	printf("================== CAS 3 ===================\n");
-	//dst trop petit, size <= strlen(src) - 1
-	printf("============================================\n");
+	//printf("================== CAS 3 ===================\n");
+	////dst trop petit,dst est vide, size <= strlen(src) - 1
+	//PROVOQUE UN SEG FAULT, COMPORTEMENT ATTENDU, TEST VALIDÉ
+	//src = "Un deux trois quatre cinq";
+	//size = 5;
+	//#define DST "4"
+	//dst = DST;
+	//printf( "dst = %s(%zu octets) , src = %s (%zu octets) , size = %zu\n", DST, strlen(DST)*sizeof(char), src, strlen(src)*sizeof(char), size);
+	//size_of_new_string = strlcat(dst,src,size);
+	//printf("ATTENDU = dst : %s(%zu), ", dst,size_of_new_string);
+	//dst2 = DST;
+	//size_of_new_string = ft_strlcat(dst2,src,size);
+	//printf("OBTENU = dst : %s(%zu)\n", dst2, size_of_new_string);
+	//src = NULL;
+	//#undef DST
+	//printf("============================================\n");
 	printf("\n");
 	printf("================== CAS 4 ===================\n");
-	//dst suffisament grand, size > strlen(src) - 1
 	printf("============================================\n");
 	printf("\n");
 	printf("================== CAS 5 ===================\n");
-	//dst trop petit, size > strlen(src) - 1
+	//dst suffisament grand, size > strlen(src) - 1
+	src = "Un deux trois quatre cinq";
+	size = strlen(src)*2;
+	#define DST ""
+	dst = calloc(2, strlen(src)*sizeof(char));
+	printf( "dst = %s(%zu octets) , src = %s (%zu octets) , size = %zu\n", DST, strlen(DST)*sizeof(char), src, strlen(src)*sizeof(char), size);
+	size_of_new_string = strlcat(dst,src,size);
+	printf("ATTENDU = dst : %s(%zu), ", dst,size_of_new_string);
+	dst2 = calloc(2, strlen(src)*sizeof(char));
+	size_of_new_string = ft_strlcat(dst2,src,size);
+	printf("OBTENU = dst : %s(%zu)\n", dst2, size_of_new_string);
+	src = NULL;
+	#undef DST
 	printf("============================================\n");
 	printf("\n");
 	printf("================== CAS 6 ===================\n");
