@@ -19,12 +19,15 @@
 //#define FT_STRLEN
 //#define FT_STRCHR
 //#define FT_STRRCHR
-//#define FT_MEMCCPY -> ECHEC
+//#define FT_MEMCCPY
 //#define FT_MEMCHR
 //#define FT_BZERO
 //#define FT_STRLCAT
 //#define FT_MEMMOVE
-#define FT_STRNSTR
+//#define FT_STRNSTR
+//#define FT_STRNCMP
+//#define FT_STRLCPY
+#define FT_ATOI
 
 //=========================FT_MEMSET==========================
 #ifdef FT_MEMSET
@@ -593,47 +596,75 @@ void	test_ft_strrchr(){
 
 //========================= FT_MEMCCPY ==========================
 #ifdef FT_MEMCCPY 
-//#include "../ft_memccpy.c"
+#include "../ft_memccpy.c"
 void	test_ft_memccpy(){
 	printf("TEST DE FT_MEMCCPY\n");	
 
 	void *dest;
 	void *src;
 	int c;
-	int n;
-	int size_of_src , size_of_dest, new_size_of_dest;
+	size_t n;
 
 	printf("================== CAS 2 ==================\n");
-	const char * text = "Ceci est ma première phrase. Et ceci est ma seconde";
-	size_t length = strlen( text );
-
-	// On essaye de trouver la première phrase dans le texte.
-	char firstSentence[ length ];
-	char * res = memccpy( firstSentence, text, '.', length );
-
-	// On affiche le resultat.
-	if ( res != NULL ) {
-		printf( "Une phrase entière a été trouvée.\n" );
-		printf( "\t%s\n", firstSentence );
-	} else {
-		printf( "Aucune phrase entière trouvée.\n" );
-	}
-
+	src = "abcdef";
+	dest = calloc(1,strlen(src)*sizeof(char));
+	c = (int)'d';
+	n = strlen(src);
+	printf("dest = %s, src = %s, c = %c, n = %zu\n",dest,src,(char)c,n);
+	printf("ATTENDU = src = (%s)%s",memccpy(dest,src,c,n),dest);
+	free(dest);
+	dest = calloc(1,strlen(src)*sizeof(char));
+	printf(", OBTENU = src = (%s)%s\n", ft_memccpy(dest,src,c,n), dest);
+	free(dest);
+	src = NULL;
 	printf("==========================================\n");
 
 	printf("\n");
 
 	printf("================== CAS 3 ==================\n");
+	src = "abcdef";
+	dest = calloc(1,strlen(src)*sizeof(char));
+	c = (int)'d';
+	n = 2;
+	printf("dest = %s, src = %s, c = %c, n = %zu\n",dest,src,(char)c,n);
+	printf("ATTENDU = src = (%s)%s",memccpy(dest,src,c,n),dest);
+	free(dest);
+	dest = calloc(1,strlen(src)*sizeof(char));
+	printf(", OBTENU = src = (%s)%s\n", ft_memccpy(dest,src,c,n), dest);
+	free(dest);
+	src = NULL;
 	printf("==========================================\n");
 
 	printf("\n");
 
 	printf("================== CAS 4 ==================\n");
+	src = "abcdef";
+	dest = calloc(1,strlen(src)*sizeof(char));
+	c = (int)'g';
+	n = strlen(src);
+	printf("dest = %s, src = %s, c = %c, n = %zu\n",dest,src,(char)c,n);
+	printf("ATTENDU = src = (%s)%s",memccpy(dest,src,c,n),dest);
+	free(dest);
+	dest = calloc(1,strlen(src)*sizeof(char));
+	printf(", OBTENU = src = (%s)%s\n", ft_memccpy(dest,src,c,n), dest);
+	free(dest);
+	src = NULL;
 	printf("==========================================\n");
 
 	printf("\n");
 
 	printf("================== CAS 5 ==================\n");
+	src = "abcdef";
+	dest = calloc(1,strlen(src)*sizeof(char));
+	c = (int)'d';
+	n = strlen(src)*2;
+	printf("dest = %s, src = %s, c = %c, n = %zu\n",dest,src,(char)c,n);
+	printf("ATTENDU = src = (%s)%s",memccpy(dest,src,c,n),dest);
+	free(dest);
+	dest = calloc(1,strlen(src)*sizeof(char));
+	printf(", OBTENU = src = (%s)%s\n", ft_memccpy(dest,src,c,n), dest);
+	free(dest);
+	src = NULL;
 	printf("==========================================\n");
 }
 #endif
@@ -1051,7 +1082,210 @@ void test_ft_strnstr(){
 //===============================================
 
 
+
+
+//================== FT_STRNCMP ===================
+#ifdef FT_STRNCMP
+#include "../ft_strncmp.c"
+void test_ft_strncmp(){
+	char *s1;
+	char *s2;
+	size_t n;
+	
+	printf("TEST DE FT_STRNCMP\n");
+	printf("================== CAS 1 ===================\n");
+	s1 = "abc";
+	s2 = "abd";
+	n = strlen(s2);
+	printf("s1 = %s, s2 = %s, n = %zu\n",s1,s2,n);
+	printf("ATTENDU = %d, OBTENU = %d\n",strncmp(s1,s2,n), ft_strncmp(s1,s2,n));
+	printf("============================================\n");
+	printf("\n");
+	printf("================== CAS 2 ===================\n");
+	s1 = "ebc";
+	s2 = "abd";
+	n = strlen(s2);
+	printf("s1 = %s, s2 = %s, n = %zu\n",s1,s2,n);
+	printf("ATTENDU = %d, OBTENU = %d\n",strncmp(s1,s2,n), ft_strncmp(s1,s2,n));
+	printf("============================================\n");
+	printf("\n");
+	printf("================== CAS 3 ===================\n");
+	s1 = "abc";
+	s2 = "abd";
+	n = 0;
+	printf("s1 = %s, s2 = %s, n = %zu\n",s1,s2,n);
+	printf("ATTENDU = %d, OBTENU = %d\n",strncmp(s1,s2,n), ft_strncmp(s1,s2,n));
+	printf("============================================\n");
+	printf("\n");
+	printf("================== CAS 4 ===================\n");
+	s1 = "abc";
+	s2 = "abc";
+	n = strlen(s2);
+	printf("s1 = %s, s2 = %s, n = %zu\n",s1,s2,n);
+	printf("ATTENDU = %d, OBTENU = %d\n",strncmp(s1,s2,n), ft_strncmp(s1,s2,n));
+	printf("============================================\n");
+	printf("\n");
+	printf("================== CAS 5 ===================\n");
+	s1 = "abc";
+	s2 = "abc000000000";
+	n = strlen(s2);
+	printf("s1 = %s, s2 = %s, n = %zu\n",s1,s2,n);
+	printf("ATTENDU = %d, OBTENU = %d\n",strncmp(s1,s2,n), ft_strncmp(s1,s2,n));
+	printf("============================================\n");
+	printf("\n");
+	printf("================== CAS 6 ===================\n");
+	printf("============================================\n");
+	printf("\n");
+	printf("================== CAS 7 ===================\n");
+	printf("============================================\n");
+	printf("\n");
+	printf("================== CAS 8 ===================\n");
+	printf("============================================\n");
+	printf("\n");
+	printf("================== CAS 9 ===================\n");
+	printf("============================================\n");
+	printf("\n");
+	printf("================== CAS 10 ===================\n");
+	printf("============================================\n");
+}
+#endif
+//===============================================
+
+
+
+
+
+
+//================== FT_STRLCPY ===================
+#ifdef FT_STRLCPY
+#include "../ft_strlcpy.c"
+void test_ft_strlcpy(){
+	printf("TEST DE FT_STRLCPY\n");
+	char *dst;
+	char *src;
+	size_t size;
+
+	printf("================== CAS 1 ===================\n");
+	src = "abc";
+	size = strlen(src);
+	dst = (char*)calloc(1,strlen(src)*sizeof(char));
+	printf("dst = %s, src = %s, size = %zu\n", dst,src,size);
+	printf("ATTENDU = (%zu)%s\n",strlcpy(dst,src,size),dst);
+	free(dst);
+	dst = (char*)calloc(1,strlen(src)*sizeof(char));
+	printf("OBTENU = (%zu)%s\n",ft_strlcpy(dst,src,size),dst);
+	src = NULL;
+	free(dst);
+	size = 0;
+	printf("============================================\n");
+	printf("\n");
+	printf("================== CAS 2 ===================\n");
+	src = "abcdef";
+	size = strlen(src);
+	dst = (char*)calloc(1,sizeof(char));
+	printf("dst = %s, src = %s, size = %zu\n", dst,src,size);
+	printf("ATTENDU = (%zu)%s\n",strlcpy(dst,src,size),dst);
+	free(dst);
+	dst = (char*)calloc(1,sizeof(char));
+	printf("OBTENU = (%zu)%s\n",ft_strlcpy(dst,src,size),dst);
+	src = NULL;
+	free(dst);
+	size = 0;
+	printf("============================================\n");
+	printf("\n");
+	printf("================== CAS 3 ===================\n");
+	printf("============================================\n");
+	printf("\n");
+	printf("================== CAS 4 ===================\n");
+	printf("============================================\n");
+	printf("\n");
+	printf("================== CAS 5 ===================\n");
+	printf("============================================\n");
+	printf("\n");
+	printf("================== CAS 6 ===================\n");
+	printf("============================================\n");
+	printf("\n");
+	printf("================== CAS 7 ===================\n");
+	printf("============================================\n");
+	printf("\n");
+	printf("================== CAS 8 ===================\n");
+	printf("============================================\n");
+	printf("\n");
+	printf("================== CAS 9 ===================\n");
+	printf("============================================\n");
+	printf("\n");
+	printf("================== CAS 10 ===================\n");
+	printf("============================================\n");
+}
+#endif
+//===============================================
+
+
+
+
+
+//================== FT_ATOI ===================
+#ifdef FT_ATOI
+#include "../ft_atoi.c"
+void test_ft_atoi(){
+	printf("TEST DE FT_ATOI\n");
+	char *nptr;
+	printf("================== CAS 1 ===================\n");
+	nptr = "2a";
+	printf("nptr = %s\n", nptr);
+	printf("ATTENDU = %d\n", atoi(nptr));
+	printf("OBTENU = %d\n",ft_atoi(nptr));
+	nptr = NULL;
+	printf("============================================\n");
+	printf("\n");
+	printf("================== CAS 2 ===================\n");
+	nptr = "a2";
+	printf("nptr = %s\n", nptr);
+	printf("ATTENDU = %d\n", atoi(nptr));
+	printf("OBTENU = %d\n",ft_atoi(nptr));
+	nptr = NULL;
+	printf("============================================\n");
+	printf("\n");
+	printf("================== CAS 3 ===================\n");
+	nptr = "280";
+	printf("nptr = %s\n", nptr);
+	printf("ATTENDU = %d\n", atoi(nptr));
+	printf("OBTENU = %d\n",ft_atoi(nptr));
+	nptr = NULL;
+	printf("============================================\n");
+	printf("\n");
+	printf("================== CAS 4 ===================\n");
+	nptr = "128b16b";
+	printf("nptr = %s\n", nptr);
+	printf("ATTENDU = %d\n", atoi(nptr));
+	printf("OBTENU = %d\n",ft_atoi(nptr));
+	nptr = NULL;
+	printf("============================================\n");
+	printf("\n");
+	printf("================== CAS 5 ===================\n");
+	printf("============================================\n");
+	printf("\n");
+	printf("================== CAS 6 ===================\n");
+	printf("============================================\n");
+	printf("\n");
+	printf("================== CAS 7 ===================\n");
+	printf("============================================\n");
+	printf("\n");
+	printf("================== CAS 8 ===================\n");
+	printf("============================================\n");
+	printf("\n");
+	printf("================== CAS 9 ===================\n");
+	printf("============================================\n");
+	printf("\n");
+	printf("================== CAS 10 ===================\n");
+	printf("============================================\n");
+}
+#endif
+//===============================================
+
+
+
 int main(){
-	test_ft_strnstr();
+	test_ft_atoi();
 	return 0;
 }

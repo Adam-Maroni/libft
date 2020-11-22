@@ -4,7 +4,7 @@
 #ifdef VARIABLE
 #include "variable.c"
 void test_variable(){
-	printf("TEST DE VARIABLE"\n);
+	printf("TEST DE VARIABLE\n");
 	printf("================== CAS 1 ===================\n");
 	printf("============================================\n");
 	printf("\n");
