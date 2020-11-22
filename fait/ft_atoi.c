@@ -6,13 +6,13 @@
 /*   By: amaroni <amaroni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/22 11:24:04 by amaroni           #+#    #+#             */
-/*   Updated: 2020/11/22 12:25:08 by amaroni          ###   ########.fr       */
+/*   Updated: 2020/11/22 12:58:09 by amaroni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 static long	ft_strlen(char *s)
 {
-	unsigned long rt;
+	long rt;
 
 	rt = 0;
 	while (*(s + rt) != '\0')
@@ -42,12 +42,12 @@ static void	*ft_calloc(int nmemb, int size)
 	return (rt_pointer);
 }
 
-int	ft_atoi(char *nptr)
+int			ft_atoi(char *nptr)
 {
-	int i;
-	int rt;
-	int x10;
-	char *array;
+	int		i;
+	int		rt;
+	int		x10;
+	char	*array;
 
 	i = 0;
 	rt = 0;
@@ -57,11 +57,8 @@ int	ft_atoi(char *nptr)
 	if (i == 0)
 		return (0);
 	array = (char*)ft_calloc((i + 1), sizeof(char));
-	while (i > 0)
-	{
-		*(array + (i - 1)) = *(nptr + (i - 1));
-		i--;
-	}
+	while (--i >= 0)
+		*(array + (i)) = *(nptr + (i));
 	i = ft_strlen(array);
 	while (i > 0)
 	{
