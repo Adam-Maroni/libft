@@ -1,0 +1,94 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: amaroni <amaroni@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/11/23 11:48:31 by amaroni           #+#    #+#             */
+/*   Updated: 2020/11/23 13:28:24 by amaroni          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
+
+static long	ft_strlen(char *s)
+{
+	unsigned long rt;
+
+	rt = 0;
+	while (*(s + rt) != '\0')
+		rt++;
+	return (rt);
+}
+
+static char		*ft_strnstr(char *big, char *little, size_t len)
+{
+	int		i;
+	int		y;
+	char	*first_occurence;
+
+	i = 0;
+	y = 0;
+	if (ft_strlen(little) == 0)
+		return (big);
+	while (i <= (int)len)
+	{
+		if (y == (int)ft_strlen(little))
+			return (first_occurence);
+		else if (*(big + i) == *(little + y))
+		{
+			if (y == 0)
+				first_occurence = (big + i);
+			i++;
+			y++;
+		}
+		else
+			i++;
+	}
+	return (NULL);
+}
+
+static size_t		ft_strlcpy(char *dst, char *src, size_t size)
+{
+	size_t y;
+	size_t rt;
+
+	y = 0;
+	rt = ft_strlen(src);
+	while (y < size - 1)
+	{
+		*(dst + y) = *(src + y);
+		y++;
+	}
+	*(dst + y) = '\0';
+	return (rt);
+}
+
+static char	*ft_substr(char *s, unsigned int start, size_t len)
+{
+	size_t	i;
+	char	*new_string;
+
+	i = 0;
+	new_string = (char*)malloc(len * sizeof(char));
+	while (i < len)
+	{
+		*(new_string + i) = *(s + i + start);
+		i++;
+	}
+	return (new_string);
+}
+
+
+char 		*ft_strtrim(char *s1, char *set)
+{
+	char *array;
+	char *start;
+
+	if ((array = (char*)malloc(ft_strlen(s1)*sizeof(char))) == NULL)
+		return (NULL);
+	ft_strlcpy(array,s1,ft_strlen(s1) + 1);
+	while ((start = ft_strnstr(array,set,ft_strlen(array))) != NULL)
+		array = ft_substr(array,*start,ft_strlen(array));		return (array);
+}
