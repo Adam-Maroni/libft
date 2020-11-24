@@ -31,7 +31,8 @@
 //#define FT_SUBSTR
 //#define FT_STRJOIN
 //#define FT_STRTRIM
-#define FT_SPLIT
+//#define FT_SPLIT
+#define FT_ITOA
 
 //=========================FT_MEMSET==========================
 #ifdef FT_MEMSET
@@ -1487,8 +1488,69 @@ void test_ft_split(){
 
 
 
+//================== FT_ITOA ===================
+#ifdef FT_ITOA
+#include "../ft_itoa.c"
+void test_ft_itoa(){
+	printf("TEST DE FT_ITOA\n");
+	int n;
+	printf("================== cas 1 ===================\n");
+	n = 653;
+	printf("n = %d\n",n);
+	printf("obtenu = %s\n",ft_itoa(n));
+	printf("============================================\n");
+	printf("\n");
+	printf("================== cas 2 ===================\n");
+	n = 4587;
+	printf("n = %d\n",n);
+	printf("obtenu = %s\n",ft_itoa(n));
+	printf("============================================\n");
+	printf("\n");
+	printf("================== cas 3 ===================\n");
+	n = 0;
+	printf("n = %d\n",n);
+	printf("obtenu = %s\n",ft_itoa(n));
+	printf("============================================\n");
+	printf("\n");
+	printf("================== CAS 4 ===================\n");
+	n = 1002;
+	printf("n = %d\n",n);
+	printf("OBTENU = %s\n",ft_itoa(n));
+	printf("============================================\n");
+	printf("\n");
+	printf("================== CAS 5 ===================\n");
+	n = -100;
+	printf("n = %d\n",n);
+	printf("OBTENU = %s\n",ft_itoa(n));
+	printf("============================================\n");
+	printf("\n");
+	printf("================== CAS 6 ===================\n");
+	n = -32768;
+	printf("n = %d\n",n);
+	printf("OBTENU = %s\n",ft_itoa(n));
+	printf("============================================\n");
+	printf("\n");
+	printf("================== CAS 7 ===================\n");
+	n = 32767;
+	printf("n = %d\n",n);
+	printf("OBTENU = %s\n",ft_itoa(n));
+	printf("============================================\n");
+	printf("\n");
+	printf("================== CAS 8 ===================\n");
+	printf("============================================\n");
+	printf("\n");
+	printf("================== CAS 9 ===================\n");
+	printf("============================================\n");
+	printf("\n");
+	printf("================== CAS 10 ===================\n");
+	printf("============================================\n");
+}
+#endif
+//===============================================
+
+
 
 int main(){
-	test_ft_split();
+	test_ft_itoa();
 	return 0;
 }
