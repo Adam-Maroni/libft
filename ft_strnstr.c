@@ -6,11 +6,17 @@
 /*   By: amaroni <amaroni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/21 18:14:29 by amaroni           #+#    #+#             */
-/*   Updated: 2020/12/01 18:51:32 by amaroni          ###   ########.fr       */
+/*   Updated: 2020/12/02 16:53:51 by amaroni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+static void	init_vars(int *i, int *y)
+{
+	*i = 0;
+	*y = 0;
+}
 
 char		*ft_strnstr(char *big, char *little, size_t len)
 {
@@ -18,8 +24,7 @@ char		*ft_strnstr(char *big, char *little, size_t len)
 	int		y;
 	char	*first_occurence;
 
-	i = 0;
-	y = 0;
+	init_vars(&i, &y);
 	if (ft_strlen(little) == 0)
 		return (big);
 	while (i <= (int)len)
@@ -34,7 +39,10 @@ char		*ft_strnstr(char *big, char *little, size_t len)
 			y++;
 		}
 		else
+		{
 			i++;
+			y = 0;
+		}
 	}
 	return (NULL);
 }

@@ -10,7 +10,7 @@
 //#define FT_MEMSET
 //#define FT_CALLOC
 //#define FT_STRDUP
-#define FT_MEMCMP
+//#define FT_MEMCMP
 //#define FT_MEMCPY
 //#define FT_TOUPPER
 //#define FT_TOLOWER
@@ -27,7 +27,7 @@
 //#define FT_BZERO
 //#define FT_STRLCAT
 //#define FT_MEMMOVE
-//#define FT_STRNSTR
+#define FT_STRNSTR
 //#define FT_STRNCMP
 //#define FT_STRLCPY
 //#define FT_ATOI
@@ -1013,6 +1013,7 @@ void test_ft_memmove(){
 //================== FT_STRNSTR ===================
 #ifdef FT_STRNSTR
 #include "../ft_strnstr.c"
+#include "../ft_strlen.c"
 void test_ft_strnstr(){
 	printf("TEST DE FT_STRNSTR\n");
 	char *big;
@@ -1075,6 +1076,14 @@ void test_ft_strnstr(){
 	printf("============================================\n");
 	printf("\n");
 	printf("================== CAS 6 ===================\n");
+	big = "lorem ipsum dolor sit amet";
+	little = "ipsumm";
+	len = 30;
+	printf("big = %s, little = %s, len = %zu\n",big,little,len);
+	printf("ATTENDU = %s , OBTENU = %s\n",strnstr(big,little,len),ft_strnstr(big,little,len));
+	big = NULL;
+	little = NULL;
+	len = 0;
 	printf("============================================\n");
 	printf("\n");
 	printf("================== CAS 7 ===================\n");
@@ -1713,6 +1722,6 @@ void test_ft_putendl_fd(){
 
 
 int main(){
-	test_ft_memcmp();
+	test_ft_strnstr();
 	return 0;
 }
