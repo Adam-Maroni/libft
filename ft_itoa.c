@@ -6,7 +6,7 @@
 /*   By: amaroni <amaroni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/24 14:58:41 by amaroni           #+#    #+#             */
-/*   Updated: 2020/12/01 19:45:32 by amaroni          ###   ########.fr       */
+/*   Updated: 2020/12/02 21:49:05 by amaroni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ static char		*int_to_inverted_array(long n)
 
 static char		*invert_array(char *s)
 {
-	int		y;
-	int		i;
-	char	*invs;
+	unsigned long		y;
+	unsigned long		i;
+	char				*invs;
 
 	i = 0;
 	y = ft_strlen(s);

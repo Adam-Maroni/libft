@@ -6,7 +6,7 @@
 /*   By: amaroni <amaroni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 10:04:40 by amaroni           #+#    #+#             */
-/*   Updated: 2020/12/01 10:15:53 by amaroni          ###   ########.fr       */
+/*   Updated: 2020/12/02 21:56:10 by amaroni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,9 @@
 
 void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	while (lst->next)
+	while (lst)
 	{
 		(*f)(lst->content);
 		lst = lst->next;
 	}
-	(*f)(lst);
 }
