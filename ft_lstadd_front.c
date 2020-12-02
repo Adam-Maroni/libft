@@ -6,7 +6,7 @@
 /*   By: amaroni <amaroni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/30 23:19:29 by amaroni           #+#    #+#             */
-/*   Updated: 2020/11/30 23:23:22 by amaroni          ###   ########.fr       */
+/*   Updated: 2020/12/02 23:48:22 by amaroni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,5 @@
 void	ft_lstadd_front(t_list **alst, t_list *new)
 {
 	new->next = *alst;
-	alst = &new;
+	*alst = new;
 }

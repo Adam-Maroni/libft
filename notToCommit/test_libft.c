@@ -27,7 +27,7 @@
 //#define FT_BZERO
 //#define FT_STRLCAT
 //#define FT_MEMMOVE
-#define FT_STRNSTR
+//#define FT_STRNSTR
 //#define FT_STRNCMP
 //#define FT_STRLCPY
 //#define FT_ATOI
@@ -35,7 +35,7 @@
 //#define FT_STRJOIN
 //#define FT_STRTRIM
 //#define FT_SPLIT
-//#define FT_ITOA
+#define FT_ITOA
 //#define FT_PUTCHAR_FD
 //#define FT_PUTSTR_FD
 //#define FT_PUTENDL_FD
@@ -937,6 +937,7 @@ void test_ft_strlcat(){
 //================== FT_MEMMOVE ===================
 #ifdef FT_MEMMOVE
 #include "../ft_memmove.c"
+#include "../ft_strlen.c"
 void test_ft_memmove(){
 	printf("TEST DE FT_MEMMOVE\n");
 
@@ -984,7 +985,18 @@ void test_ft_memmove(){
 	printf(", OBTENU = %s\n",ft_memmove(dest,src,n));
 	printf("============================================\n");
 	printf("\n");
+
+
+
 	printf("================== CAS 4 ===================\n");
+	src = "lorem ipsum dolor sit amet\0";
+	dest = src + 1;
+	n = 8;
+	printf("dest = %s , src = %s , n = %d\n",dest,src,n);
+	printf("ATTENDU = %s ", memmove(dest,src,n));
+	free(dest);
+	dest = src + 1;
+	printf(", OBTENU = %s\n",ft_memmove(dest,src,n));
 	printf("============================================\n");
 	printf("\n");
 	printf("================== CAS 5 ===================\n");
@@ -1529,52 +1541,57 @@ void test_ft_split(){
 //================== FT_ITOA ===================
 #ifdef FT_ITOA
 #include "../ft_itoa.c"
+#include "../ft_strlen.c"
+#include "../ft_strlcat.c"
 void test_ft_itoa(){
 	printf("TEST DE FT_ITOA\n");
 	int n;
-	printf("================== cas 1 ===================\n");
-	n = 653;
-	printf("n = %d\n",n);
-	printf("obtenu = %s\n",ft_itoa(n));
-	printf("============================================\n");
-	printf("\n");
-	printf("================== cas 2 ===================\n");
-	n = 4587;
-	printf("n = %d\n",n);
-	printf("obtenu = %s\n",ft_itoa(n));
-	printf("============================================\n");
-	printf("\n");
-	printf("================== cas 3 ===================\n");
+	//printf("================== cas 1 ===================\n");
+	//n = 653;
+	//printf("n = %d\n",n);
+	//printf("obtenu = %s\n",ft_itoa(n));
+	//printf("============================================\n");
+	//printf("\n");
+	//printf("================== cas 2 ===================\n");
+	//n = 4587;
+	//printf("n = %d\n",n);
+	//printf("obtenu = %s\n",ft_itoa(n));
+	//printf("============================================\n");
+	//printf("\n");
+	//printf("================== cas 3 ===================\n");
+	//n = 0;
+	//printf("n = %d\n",n);
+	//printf("obtenu = %s\n",ft_itoa(n));
+	//printf("============================================\n");
+	//printf("\n");
+	//printf("================== CAS 4 ===================\n");
+	//n = 1002;
+	//printf("n = %d\n",n);
+	//printf("OBTENU = %s\n",ft_itoa(n));
+	//printf("============================================\n");
+	//printf("\n");
+	//printf("================== CAS 5 ===================\n");
+	//n = -100;
+	//printf("n = %d\n",n);
+	//printf("OBTENU = %s\n",ft_itoa(n));
+	//printf("============================================\n");
+	//printf("\n");
+	//printf("================== CAS 6 ===================\n");
+	//n = -32768;
+	//printf("n = %d\n",n);
+	//printf("OBTENU = %s\n",ft_itoa(n));
+	//printf("============================================\n");
+	//printf("\n");
+	//printf("================== CAS 7 ===================\n");
+	//n = 32767;
+	//printf("n = %d\n",n);
+	//printf("OBTENU = %s\n",ft_itoa(n));
+	//printf("============================================\n");
+	//printf("\n");
+	printf("================== CAS 8 ===================\n");
 	n = 0;
 	printf("n = %d\n",n);
-	printf("obtenu = %s\n",ft_itoa(n));
-	printf("============================================\n");
-	printf("\n");
-	printf("================== CAS 4 ===================\n");
-	n = 1002;
-	printf("n = %d\n",n);
-	printf("OBTENU = %s\n",ft_itoa(n));
-	printf("============================================\n");
-	printf("\n");
-	printf("================== CAS 5 ===================\n");
-	n = -100;
-	printf("n = %d\n",n);
-	printf("OBTENU = %s\n",ft_itoa(n));
-	printf("============================================\n");
-	printf("\n");
-	printf("================== CAS 6 ===================\n");
-	n = -32768;
-	printf("n = %d\n",n);
-	printf("OBTENU = %s\n",ft_itoa(n));
-	printf("============================================\n");
-	printf("\n");
-	printf("================== CAS 7 ===================\n");
-	n = 32767;
-	printf("n = %d\n",n);
-	printf("OBTENU = %s\n",ft_itoa(n));
-	printf("============================================\n");
-	printf("\n");
-	printf("================== CAS 8 ===================\n");
+	printf("OBTENU = %s\n",ft_itoa(0));
 	printf("============================================\n");
 	printf("\n");
 	printf("================== CAS 9 ===================\n");
@@ -1722,6 +1739,6 @@ void test_ft_putendl_fd(){
 
 
 int main(){
-	test_ft_strnstr();
+	test_ft_itoa();
 	return 0;
 }
