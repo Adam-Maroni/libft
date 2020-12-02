@@ -10,7 +10,7 @@
 //#define FT_MEMSET
 //#define FT_CALLOC
 //#define FT_STRDUP
-//#define FT_MEMCMP
+#define FT_MEMCMP
 //#define FT_MEMCPY
 //#define FT_TOUPPER
 //#define FT_TOLOWER
@@ -30,7 +30,7 @@
 //#define FT_STRNSTR
 //#define FT_STRNCMP
 //#define FT_STRLCPY
-#define FT_ATOI
+//#define FT_ATOI
 //#define FT_SUBSTR
 //#define FT_STRJOIN
 //#define FT_STRTRIM
@@ -121,9 +121,9 @@ void test_ft_memcmp(){
 	int n;
 
 	printf("============== CAS 1 ====================\n");
-#define S1_1 ""
-#define S2_1 "hola\0"
-	n = 0;
+#define S1_1 "t\200"
+#define S2_1 "t\0"
+	n = 6;
 	s1 = (char*)malloc(sizeof(S1_1));
 	strcpy(s1, S1_1);
 	s2 = (char*)malloc(sizeof(S2_1));
@@ -1277,7 +1277,7 @@ void test_ft_atoi(){
 	printf("============================================\n");
 	printf("\n");
 	printf("================== CAS 5 ===================\n");
-	nptr = "128b16b";
+	nptr = "--5";
 	printf("nptr = %s\n", nptr);
 	printf("ATTENDU = %d\n", atoi(nptr));
 	printf("OBTENU = %d\n",ft_atoi(nptr));
@@ -1285,12 +1285,27 @@ void test_ft_atoi(){
 	printf("============================================\n");
 	printf("\n");
 	printf("================== CAS 6 ===================\n");
+	nptr = "+-5";
+	printf("nptr = %s\n", nptr);
+	printf("ATTENDU = %d\n", atoi(nptr));
+	printf("OBTENU = %d\n",ft_atoi(nptr));
+	nptr = NULL;
 	printf("============================================\n");
 	printf("\n");
 	printf("================== CAS 7 ===================\n");
+	nptr = "+5";
+	printf("nptr = %s\n", nptr);
+	printf("ATTENDU = %d\n", atoi(nptr));
+	printf("OBTENU = %d\n",ft_atoi(nptr));
+	nptr = NULL;
 	printf("============================================\n");
 	printf("\n");
 	printf("================== CAS 8 ===================\n");
+	nptr = " -46";
+	printf("nptr = %s\n", nptr);
+	printf("ATTENDU = %d\n", atoi(nptr));
+	printf("OBTENU = %d\n",ft_atoi(nptr));
+	nptr = NULL;
 	printf("============================================\n");
 	printf("\n");
 	printf("================== CAS 9 ===================\n");
@@ -1698,6 +1713,6 @@ void test_ft_putendl_fd(){
 
 
 int main(){
-	test_ft_atoi();
+	test_ft_memcmp();
 	return 0;
 }

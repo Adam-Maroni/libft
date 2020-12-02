@@ -6,7 +6,7 @@
 /*   By: amaroni <amaroni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/18 15:40:35 by amaroni           #+#    #+#             */
-/*   Updated: 2020/11/18 18:15:29 by amaroni          ###   ########.fr       */
+/*   Updated: 2020/12/02 15:51:33 by amaroni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,17 @@ int	ft_memcmp(void *s1, void *s2, int n)
 	if (n == 0)
 		return (0);
 	i = 0;
-	while ((*((char*)s1 + i) == *((char*)s2 + i)) && (i < n))
+	while ((*((unsigned char*)(s1 + i)) == *((unsigned char*)(s2 + i)))
+			&& (i < n))
 		i++;
-	if ((i < n) && (*((char*)s1 + i) > *((char*)s2 + i)))
+	if ((i < n) &&
+			((*((unsigned char*)(s1 + i))) > (*((unsigned char*)(s2 + i)))))
 		return (1);
-	else if ((i < n) && (*((char*)s1 + i) == *((char*)s2 + i)))
+	else if ((i < n) &&
+			((*((unsigned char*)(s1 + i))) == (*((unsigned char*)(s2 + i)))))
 		return (0);
-	else if ((i < n) && (*((char*)s1 + i) < *((char*)s2 + i)))
+	else if ((i < n) &&
+			((*((unsigned char*)(s1 + i))) < (*((unsigned char*)(s2 + i)))))
 		return (-1);
 	else
 		return (0);
