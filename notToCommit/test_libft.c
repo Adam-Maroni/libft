@@ -1,8 +1,11 @@
-#include "/home/user42/projets/libft/libft.h" 
+#include "../libft.h"
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
 #include <bsd/string.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
 
 //#define FT_MEMSET
 //#define FT_CALLOC
@@ -27,12 +30,15 @@
 //#define FT_STRNSTR
 //#define FT_STRNCMP
 //#define FT_STRLCPY
-//#define FT_ATOI
+#define FT_ATOI
 //#define FT_SUBSTR
 //#define FT_STRJOIN
 //#define FT_STRTRIM
 //#define FT_SPLIT
-#define FT_ITOA
+//#define FT_ITOA
+//#define FT_PUTCHAR_FD
+//#define FT_PUTSTR_FD
+//#define FT_PUTENDL_FD
 
 //=========================FT_MEMSET==========================
 #ifdef FT_MEMSET
@@ -1232,6 +1238,9 @@ void test_ft_strlcpy(){
 //================== FT_ATOI ===================
 #ifdef FT_ATOI
 #include "../ft_atoi.c"
+#include "../ft_strlen.c"
+#include "../ft_calloc.c"
+#include "../ft_isdigit.c"
 void test_ft_atoi(){
 	printf("TEST DE FT_ATOI\n");
 	char *nptr;
@@ -1260,7 +1269,7 @@ void test_ft_atoi(){
 	printf("============================================\n");
 	printf("\n");
 	printf("================== CAS 4 ===================\n");
-	nptr = "128b16b";
+	nptr = "-1";
 	printf("nptr = %s\n", nptr);
 	printf("ATTENDU = %d\n", atoi(nptr));
 	printf("OBTENU = %d\n",ft_atoi(nptr));
@@ -1268,6 +1277,11 @@ void test_ft_atoi(){
 	printf("============================================\n");
 	printf("\n");
 	printf("================== CAS 5 ===================\n");
+	nptr = "128b16b";
+	printf("nptr = %s\n", nptr);
+	printf("ATTENDU = %d\n", atoi(nptr));
+	printf("OBTENU = %d\n",ft_atoi(nptr));
+	nptr = NULL;
 	printf("============================================\n");
 	printf("\n");
 	printf("================== CAS 6 ===================\n");
@@ -1550,7 +1564,140 @@ void test_ft_itoa(){
 
 
 
+//================== FT_PUTCHAR_FD ===================
+#ifdef FT_PUTCHAR_FD
+#include "../ft_putchar_fd.c"
+void test_ft_putchar_fd(){
+	printf("TEST DE FT_PUTCHAR_FD\n");
+	char c;
+	int fd = open("/home/user42/projets/libft/notToCommit/test_ft_putchar_fd.txt", O_WRONLY | O_APPEND);  
+	printf("================== CAS 1 ===================\n");
+	c = 'a';
+	ft_putchar_fd(c,fd);
+	printf("============================================\n");
+	printf("\n");
+	printf("================== CAS 2 ===================\n");
+	printf("============================================\n");
+	printf("\n");
+	printf("================== CAS 3 ===================\n");
+	printf("============================================\n");
+	printf("\n");
+	printf("================== CAS 4 ===================\n");
+	printf("============================================\n");
+	printf("\n");
+	printf("================== CAS 5 ===================\n");
+	printf("============================================\n");
+	printf("\n");
+	printf("================== CAS 6 ===================\n");
+	printf("============================================\n");
+	printf("\n");
+	printf("================== CAS 7 ===================\n");
+	printf("============================================\n");
+	printf("\n");
+	printf("================== CAS 8 ===================\n");
+	printf("============================================\n");
+	printf("\n");
+	printf("================== CAS 9 ===================\n");
+	printf("============================================\n");
+	printf("\n");
+	printf("================== CAS 10 ===================\n");
+	printf("============================================\n");
+}
+#endif
+//===============================================
+
+
+
+//================== FT_PUTSTR_FD ===================
+#ifdef FT_PUTSTR_FD
+#include "../ft_putstr_fd.c"
+void test_ft_putstr_fd(){
+	printf("TEST DE FT_PUTSTR_FD\n");
+	char *s;
+	int fd = open("/home/user42/projets/libft/notToCommit/test_ft_putstr_fd.txt", O_WRONLY | O_APPEND);  
+
+	printf("================== CAS 1 ===================\n");
+	s = "hello";
+	ft_putstr_fd(s, fd);
+	printf("============================================\n");
+	printf("\n");
+	printf("================== CAS 2 ===================\n");
+	printf("============================================\n");
+	printf("\n");
+	printf("================== CAS 3 ===================\n");
+	printf("============================================\n");
+	printf("\n");
+	printf("================== CAS 4 ===================\n");
+	printf("============================================\n");
+	printf("\n");
+	printf("================== CAS 5 ===================\n");
+	printf("============================================\n");
+	printf("\n");
+	printf("================== CAS 6 ===================\n");
+	printf("============================================\n");
+	printf("\n");
+	printf("================== CAS 7 ===================\n");
+	printf("============================================\n");
+	printf("\n");
+	printf("================== CAS 8 ===================\n");
+	printf("============================================\n");
+	printf("\n");
+	printf("================== CAS 9 ===================\n");
+	printf("============================================\n");
+	printf("\n");
+	printf("================== CAS 10 ===================\n");
+	printf("============================================\n");
+}
+#endif
+//===============================================
+
+
+
+//================== FT_PUTENDL_FD ===================
+#ifdef FT_PUTENDL_FD
+#include "../ft_putendl_fd.c"
+void test_ft_putendl_fd(){
+	printf("TEST DE FT_PUTENDL_FD\n");
+	char *s;
+	int fd = open("/home/user42/projets/libft/notToCommit/test_ft_putendl_fd.txt", O_WRONLY);  
+
+	printf("================== CAS 1 ===================\n");
+	s = "hello";
+	ft_putendl_fd(s,fd);
+	printf("============================================\n");
+	printf("\n");
+	printf("================== CAS 2 ===================\n");
+	printf("============================================\n");
+	printf("\n");
+	printf("================== CAS 3 ===================\n");
+	printf("============================================\n");
+	printf("\n");
+	printf("================== CAS 4 ===================\n");
+	printf("============================================\n");
+	printf("\n");
+	printf("================== CAS 5 ===================\n");
+	printf("============================================\n");
+	printf("\n");
+	printf("================== CAS 6 ===================\n");
+	printf("============================================\n");
+	printf("\n");
+	printf("================== CAS 7 ===================\n");
+	printf("============================================\n");
+	printf("\n");
+	printf("================== CAS 8 ===================\n");
+	printf("============================================\n");
+	printf("\n");
+	printf("================== CAS 9 ===================\n");
+	printf("============================================\n");
+	printf("\n");
+	printf("================== CAS 10 ===================\n");
+	printf("============================================\n");
+}
+#endif
+//===============================================
+
+
 int main(){
-	test_ft_itoa();
+	test_ft_atoi();
 	return 0;
 }
