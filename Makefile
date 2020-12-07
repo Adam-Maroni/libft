@@ -25,3 +25,7 @@ bonus:
 	$(CC) -c $(SRC_BONUS)
 	ar rc $(NAME) $(OBJ_BONUS)
 	ranlib $(NAME)
+
+so:
+	$(CC) -c -fPIC $(FLAGS) $(SRC) $(SRC_BONUS)
+	clang -shared -o libft.so $(OBJ) $(OBJ_BONUS)

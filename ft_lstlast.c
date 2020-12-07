@@ -6,7 +6,7 @@
 /*   By: amaroni <amaroni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/30 23:29:40 by amaroni           #+#    #+#             */
-/*   Updated: 2020/11/30 23:31:38 by amaroni          ###   ########.fr       */
+/*   Updated: 2020/12/05 20:09:51 by amaroni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 t_list	*ft_lstlast(t_list *lst)
 {
+	if (lst == NULL)
+		return (NULL);
 	while (lst->next)
 		lst = lst->next;
 	return (lst);

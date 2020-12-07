@@ -6,60 +6,64 @@
 /*   By: amaroni <amaroni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/22 11:24:04 by amaroni           #+#    #+#             */
-/*   Updated: 2020/12/02 14:20:46 by amaroni          ###   ########.fr       */
+/*   Updated: 2020/12/06 00:01:23 by amaroni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	return_rt_value(int i, char **array)
+static int	ft_isspace(int c)
 {
-	long x10;
-	long rt;
+	unsigned char c_c;
 
-	x10 = 1;
-	rt = 0;
-	while (--i >= 0)
-	{
-		rt += ((*array)[i] - '0') * (x10);
-		x10 *= 10;
-	}
-	return (rt);
+	c_c = (unsigned char)(c);
+	if (
+			(c_c != '\f') &&
+			(c_c != '\n') &&
+			(c_c != '\t') &&
+			(c_c != '\r') &&
+			(c_c != '\v') &&
+			(c_c != ' '))
+		return (0);
+	else
+		return (1);
 }
 
-static void	initialize_variables(int *sign, int *i, long *rt, long *x10)
+static int	ft_issign(char c)
 {
-	*sign = 1;
-	*i = 0;
-	*rt = 0;
-	*x10 = 1;
+	if (c == '+')
+		return (1);
+	else if (c == '-')
+		return (-1);
+	else
+		return (0);
 }
 
 int			ft_atoi(char *nptr)
 {
-	int			i;
-	char		*array;
-	long		rt;
-	int			sign;
-	long		x10;
+	unsigned long	x10;
+	int				sign;
+	double			rt;
 
-	initialize_variables(&sign, &i, &rt, &x10);
-	if ((nptr[0] == '+') || (nptr[0] == '-') || (nptr[0] == ' '))
+	rt = 0;
+	x10 = 1;
+	sign = 1;
+	while (ft_isspace((int)(*nptr)) != 0)
+		nptr++;
+	if (ft_issign(*nptr) != 0)
 	{
-		if (nptr[0] == '-')
-			sign = -1;
+		sign = ft_issign(*nptr);
 		nptr++;
 	}
-	while (ft_isdigit(nptr[i]) > 0)
-		i++;
-	if ((array = (char*)calloc(i + 1, sizeof(char))) == NULL)
-		return (0);
-	i = 0;
-	while (ft_isdigit(nptr[i]) > 0)
+	while (ft_isdigit(nptr[(int)(rt++)]) != 0)
+		x10 *= 10;
+	rt = 0;
+	x10 /= 10;
+	while (ft_isdigit(*nptr) != 0)
 	{
-		array[i] = nptr[i];
-		i++;
+		rt += ((*nptr) - '0') * (x10);
+		x10 /= 10;
+		nptr++;
 	}
-	rt = return_rt_value(i, &array);
-	return (rt * sign);
+	return ((int)(rt) * sign);
 }

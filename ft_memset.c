@@ -6,7 +6,7 @@
 /*   By: amaroni <amaroni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/17 11:13:56 by amaroni           #+#    #+#             */
-/*   Updated: 2020/12/01 13:34:55 by amaroni          ###   ########.fr       */
+/*   Updated: 2020/12/04 13:07:46 by amaroni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	*ft_memset(void *s, int c, int n)
 	i = 0;
 	while (i < n)
 	{
-		*((int*)s + i) = c;
+		*((unsigned char*)(s + i)) = (unsigned char)c;
 		i++;
 	}
 	return (s);

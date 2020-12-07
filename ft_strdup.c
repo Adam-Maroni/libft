@@ -6,7 +6,7 @@
 /*   By: amaroni <amaroni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/18 13:19:02 by amaroni           #+#    #+#             */
-/*   Updated: 2020/11/18 16:19:12 by amaroni          ###   ########.fr       */
+/*   Updated: 2020/12/04 19:47:47 by amaroni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,17 @@
 
 char	*ft_strdup(char *s)
 {
-	char	*rt_pointer;
-	int		i;
+	char		*rt_pointer;
+	size_t		i;
 
-	i = 0;
-	while (*(s + i) != '\0')
-		i++;
-	if (i > 0)
-	{
-		rt_pointer = (char*)malloc(sizeof(char) * i);
-		i = 0;
-		while (*(s + i) != '\0')
-		{
-			*(rt_pointer + i) = *(s + i);
-			i++;
-		}
-		*(rt_pointer + i + 1) = '\0';
-	}
-	else
+	if ((rt_pointer = (char*)malloc((ft_strlen(s) + 1) * sizeof(char))) == NULL)
 		return (NULL);
+	i = 0;
+	while (s[i])
+	{
+		rt_pointer[i] = s[i];
+		i++;
+	}
+	rt_pointer[i] = '\0';
 	return (rt_pointer);
 }

@@ -6,7 +6,7 @@
 /*   By: amaroni <amaroni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/17 16:41:48 by amaroni           #+#    #+#             */
-/*   Updated: 2020/12/01 13:37:51 by amaroni          ###   ########.fr       */
+/*   Updated: 2020/12/04 19:29:00 by amaroni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ void	*ft_calloc(int nmemb, int size)
 	int		i;
 
 	i = 0;
-	rt_pointer = (void*)malloc(nmemb * size);
+	if ((rt_pointer = (void*)malloc(nmemb * size)) == NULL)
+		return (NULL);
 	while (i < nmemb)
 	{
 		*((int*)rt_pointer + i) = 0;

@@ -6,7 +6,7 @@
 /*   By: amaroni <amaroni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/24 11:03:37 by amaroni           #+#    #+#             */
-/*   Updated: 2020/12/01 19:46:02 by amaroni          ###   ########.fr       */
+/*   Updated: 2020/12/07 17:26:27 by amaroni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static int	ft_count_occurence(char *s, char c)
 {
-	int i;
-	int y;
+	unsigned long i;
+	unsigned long y;
 
 	i = 0;
 	y = 0;
@@ -27,29 +27,13 @@ static int	ft_count_occurence(char *s, char c)
 	return (y);
 }
 
-size_t		ft_strlcpy(char *dst, char *src, size_t size)
-{
-	size_t y;
-	size_t rt;
-
-	y = 0;
-	rt = ft_strlen(src);
-	while (y < size - 1)
-	{
-		*(dst + y) = *(src + y);
-		y++;
-	}
-	*(dst + y) = '\0';
-	return (rt);
-}
-
 char		**ft_split(char *s, char c)
 {
-	int		i;
-	int		y;
-	char	**rt;
-	char	*start;
-	char	*scpy;
+	unsigned long		i;
+	unsigned long		y;
+	char				**rt;
+	char				*start;
+	char				*scpy;
 
 	rt = (char**)malloc(ft_count_occurence(s, c) * sizeof(char*));
 	scpy = (char*)malloc(ft_strlen(s) * sizeof(char));

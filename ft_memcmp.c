@@ -5,31 +5,29 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: amaroni <amaroni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/18 15:40:35 by amaroni           #+#    #+#             */
-/*   Updated: 2020/12/02 15:51:33 by amaroni          ###   ########.fr       */
+/*   Created: 2020/12/05 00:11:59 by amaroni           #+#    #+#             */
+/*   Updated: 2020/12/05 18:32:24 by amaroni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_memcmp(void *s1, void *s2, int n)
+int	ft_memcmp(void *s1, void *s2, size_t n)
 {
-	int i;
+	unsigned char	*c_s1;
+	unsigned char	*c_s2;
+	size_t			i;
 
-	if (n == 0)
-		return (0);
+	c_s1 = (unsigned char*)(s1);
+	c_s2 = (unsigned char*)(s2);
 	i = 0;
-	while ((*((unsigned char*)(s1 + i)) == *((unsigned char*)(s2 + i)))
-			&& (i < n))
+	while ((c_s1[i] == c_s2[i]) && (i < (n - 1)))
 		i++;
-	if ((i < n) &&
-			((*((unsigned char*)(s1 + i))) > (*((unsigned char*)(s2 + i)))))
-		return (1);
-	else if ((i < n) &&
-			((*((unsigned char*)(s1 + i))) == (*((unsigned char*)(s2 + i)))))
+	if (i >= n)
 		return (0);
-	else if ((i < n) &&
-			((*((unsigned char*)(s1 + i))) < (*((unsigned char*)(s2 + i)))))
+	else if (c_s1[i] > c_s2[i])
+		return (1);
+	else if (c_s1[i] < c_s2[i])
 		return (-1);
 	else
 		return (0);

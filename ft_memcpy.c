@@ -6,7 +6,7 @@
 /*   By: amaroni <amaroni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 09:29:42 by amaroni           #+#    #+#             */
-/*   Updated: 2020/12/01 13:39:48 by amaroni          ###   ########.fr       */
+/*   Updated: 2020/12/04 11:17:39 by amaroni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,11 @@ void	*ft_memcpy(void *dest, void *src, int n)
 	int i;
 
 	i = 0;
-	while (i < n)
-	{
-		*((char*)dest + i) = *((char*)src + i);
-		i++;
-	}
+	if ((dest) || (src))
+		while (i < n)
+		{
+			*((char*)dest + i) = *((char*)src + i);
+			i++;
+		}
 	return (dest);
 }

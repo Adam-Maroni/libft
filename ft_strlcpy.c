@@ -6,7 +6,7 @@
 /*   By: amaroni <amaroni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/22 10:43:27 by amaroni           #+#    #+#             */
-/*   Updated: 2020/12/01 18:47:54 by amaroni          ###   ########.fr       */
+/*   Updated: 2020/12/05 13:59:51 by amaroni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,17 @@
 
 size_t		ft_strlcpy(char *dst, char *src, size_t size)
 {
-	size_t y;
-	size_t rt;
+	unsigned long y;
 
-	y = 0;
-	rt = ft_strlen(src);
-	while (y < size - 1)
+	y = ft_strlen(src);
+	if (size <= 0)
+		return (y);
+	while ((size-- > 1) && (*src))
 	{
-		*(dst + y) = *(src + y);
-		y++;
+		*dst = *src;
+		dst++;
+		src++;
 	}
-	*(dst + y) = '\0';
-	return (rt);
+	*dst = '\0';
+	return (y);
 }

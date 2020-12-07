@@ -6,7 +6,7 @@
 /*   By: amaroni <amaroni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/30 23:47:33 by amaroni           #+#    #+#             */
-/*   Updated: 2020/11/30 23:49:43 by amaroni          ###   ########.fr       */
+/*   Updated: 2020/12/05 20:38:44 by amaroni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,6 @@
 
 void	ft_lstdelone(t_list *lst, void (*del)(void*))
 {
-	(*del)(lst);
+	(*del)(lst->content);
 	free(lst);
 }

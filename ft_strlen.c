@@ -6,11 +6,13 @@
 /*   By: amaroni <amaroni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/20 11:46:54 by amaroni           #+#    #+#             */
-/*   Updated: 2020/11/20 12:08:34 by amaroni          ###   ########.fr       */
+/*   Updated: 2020/12/07 17:42:07 by amaroni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-unsigned long	ft_strlen(char *s)
+#include "libft.h"
+
+size_t	ft_strlen(char *s)
 {
 	unsigned long rt;
 

@@ -6,55 +6,54 @@
 /*   By: amaroni <amaroni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 14:18:24 by amaroni           #+#    #+#             */
-/*   Updated: 2020/12/01 21:54:15 by amaroni          ###   ########.fr       */
+/*   Updated: 2020/12/07 17:16:16 by amaroni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void	loop1(int y, int *i, char *set, char *s1)
-{
-	while (y < ft_strlen(set))
-	{
-		while (*(s1 + ++*i) == *(set + y))
-			y = 0;
-		y++;
-	}
-}
+#include "libft.h"
 
-static void	loop2(int y, int *i, char *set, char *s1)
+static int	isfound_fromfront(char *s2, char *start)
 {
-	while (y < ft_strlen(set))
-	{
-		while (*(s1 + *i) == *(set + y))
-		{
-			*i -= 1;
-			y = 0;
-		}
-		y++;
-	}
-}
-
-char		*ft_strtrim(char *s1, char *set)
-{
-	int		i;
-	int		y;
-	char	*array;
-	char	*start;
-	char	*end;
+	unsigned long i;
 
 	i = 0;
-	y = 0;
-	array = (char*)malloc((ft_strlen(s1) + 1) * sizeof(char));
-	loop1(y, &i, set, s1);
-	start = (s1 + i);
-	y = 0;
-	i = ft_strlen(s1) - 1;
-	loop2(y, &i, set, s1);
-	end = (s1 + i);
-	i = start - s1;
-	y = 0;
-	while (i <= (end - s1))
-		*(array + y++) = *(s1 + i++);
-	return (array);
+	while ((s2[i] != *start) && (i < ft_strlen(s2)))
+		i++;
+	if (i >= ft_strlen(s2))
+		return (1);
+	else
+		return (0);
+}
+
+static int	isfound_fromback(char *s2, char *end)
+{
+	unsigned long i;
+
+	i = 0;
+	while ((s2[i] != *end) && (i < ft_strlen(s2)))
+		i++;
+	if (i >= ft_strlen(s2))
+		return (1);
+	else
+		return (0);
+}
+
+char		*ft_strtrim(char *s1, char *s2)
+{
+	char *start;
+	char *end;
+
+	start = s1;
+	end = s1 + (ft_strlen(s1) - 1);
+	while (isfound_fromfront(s2, start) == 0)
+		start++;
+	while (isfound_fromback(s2, end) == 0)
+		end--;
+	if (end > start)
+		return (ft_substr(s1, (unsigned int)(start - s1),
+					(unsigned int)(end - start + 1)));
+	else
+		return ("");
 }

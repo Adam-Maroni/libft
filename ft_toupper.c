@@ -6,13 +6,15 @@
 /*   By: amaroni <amaroni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 16:04:24 by amaroni           #+#    #+#             */
-/*   Updated: 2020/11/19 16:31:13 by amaroni          ###   ########.fr       */
+/*   Updated: 2020/12/04 19:20:37 by amaroni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+
 int	ft_toupper(int c)
 {
-	if ((c >= 97) && (c <= 122))
-		c -= 32;
+	if (c >= 'a' && c <= 'z')
+		return (c - 32);
 	return (c);
 }

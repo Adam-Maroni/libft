@@ -6,7 +6,7 @@
 /*   By: amaroni <amaroni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 20:23:11 by amaroni           #+#    #+#             */
-/*   Updated: 2020/12/02 20:23:13 by amaroni          ###   ########.fr       */
+/*   Updated: 2020/12/04 09:28:22 by amaroni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@ t_list			*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 
 	new_list = ft_lstnew((*f)(lst->content));
 	first_element = new_list;
-	while (lst->next)
+	while (lst)
 	{
 		lst = lst->next;
 		new_list->next = ft_lstnew((*f)(lst->content));
 		new_list = new_list->next;
 	}
-	new_list = ft_lstnew((*f)(lst->content));
+	(*del)(NULL);
 	return (first_element);
 }
