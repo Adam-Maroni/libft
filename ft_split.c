@@ -5,53 +5,83 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: amaroni <amaroni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/24 11:03:37 by amaroni           #+#    #+#             */
-/*   Updated: 2020/12/07 17:26:27 by amaroni          ###   ########.fr       */
+/*   Created: 2020/12/07 21:00:28 by amaroni           #+#    #+#             */
+/*   Updated: 2020/12/08 18:50:26 by amaroni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_count_occurence(char *s, char c)
+static unsigned int	count_words(char *s, char c)
 {
-	unsigned long i;
-	unsigned long y;
+	int i;
+	int y;
 
 	i = 0;
 	y = 0;
-	while (i++ < ft_strlen(s))
+	while (s[i])
 	{
-		if (*(s + i) == c)
+		if (s[i] != c && (s[i - 1] == c || i == 0))
 			y++;
+		i++;
 	}
 	return (y);
 }
 
-char		**ft_split(char *s, char c)
+static void			array_with_0(char **scp, char c)
 {
-	unsigned long		i;
-	unsigned long		y;
-	char				**rt;
-	char				*start;
-	char				*scpy;
+	size_t i;
+	size_t len;
 
-	rt = (char**)malloc(ft_count_occurence(s, c) * sizeof(char*));
-	scpy = (char*)malloc(ft_strlen(s) * sizeof(char));
-	ft_strlcpy(scpy, s, ft_strlen(s));
+	len = ft_strlen(*scp);
 	i = 0;
-	while (i++ < ft_strlen(s))
-		if (*(scpy + i) == c)
-			*(scpy + i) = '\0';
+	while (i < len)
+	{
+		if ((*scp)[i] == c)
+			(*scp)[i] = '\0';
+		i++;
+	}
+}
+
+static int			split_the_copy(size_t len, char ***p_rt, char **p_scp)
+{
+	size_t	i;
+	int		y;
+	char	*ele;
+
+	i = 0;
 	y = 0;
-	i = 0;
-	start = scpy;
-	while ((i++ < ft_strlen(s)))
-		if (*(scpy + i) == '\0')
+	while (i < len)
+	{
+		ele = &((*p_scp)[i]);
+		if (*ele)
 		{
-			rt[y] = (char*)malloc((ft_strlen(start) + 1) * sizeof(char));
-			ft_strlcpy(rt[y++], start, ft_strlen(start) + 1);
-			start = (scpy + i) + 1;
+			if (!((*p_rt)[y] = (char*)ft_calloc(ft_strlen(ele) + 1
+							, sizeof(*(*p_rt)[y]))))
+				return (0);
+			ft_strlcpy((*p_rt)[y], ele, ft_strlen(ele) + 2);
+			y++;
+			i += ft_strlen(ele) - 1;
 		}
-	rt[y] = "\0";
+		i++;
+	}
+	(*p_rt)[y] = "\0";
+	return (1);
+}
+
+char				**ft_split(char *s, char c)
+{
+	char	**rt;
+	size_t	len;
+	char	*scp;
+
+	if (!(rt = (char**)ft_calloc(count_words(s, c) + 1, sizeof(*rt)))
+			|| !(scp = ft_strdup(s)))
+		return (NULL);
+	len = ft_strlen(scp);
+	array_with_0(&scp, c);
+	if (!(split_the_copy(len, &rt, &scp)))
+		return (NULL);
+	free(scp);
 	return (rt);
 }

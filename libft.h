@@ -6,7 +6,7 @@
 /*   By: amaroni <amaroni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/17 11:58:55 by amaroni           #+#    #+#             */
-/*   Updated: 2020/12/04 14:59:00 by amaroni          ###   ########.fr       */
+/*   Updated: 2020/12/07 23:21:03 by amaroni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ size_t				ft_strlcpy(char *dst, char *src, size_t size);
 size_t				ft_strlcat(char *dst, char *src, size_t size);
 char				*ft_strnstr(char *big, char *little, size_t len);
 int					ft_atoi(char *nptr);
-void				*ft_calloc(int nmemb, int size);
+void				*ft_calloc(size_t nmemb, size_t size);
 char				*ft_strdup(char *s);
 char				*ft_substr(char *s, unsigned int start, size_t len);
 char				*ft_strjoin(char *s1, char *s2);
