@@ -6,15 +6,15 @@
 /*   By: amaroni <amaroni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 16:48:33 by amaroni           #+#    #+#             */
-/*   Updated: 2020/11/19 18:42:56 by amaroni          ###   ########.fr       */
+/*   Updated: 2020/12/08 20:47:55 by amaroni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+
 int	ft_isalnum(int c)
 {
-	if (((c >= 'a') && (c <= 'z'))
-	|| ((c >= 'A') && (c <= 'Z'))
-	|| ((c >= '0') && (c <= '9')))
+	if (ft_isalpha(c) || ft_isdigit(c))
 		return (8);
 	else
 		return (0);

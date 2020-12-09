@@ -6,7 +6,7 @@
 /*   By: amaroni <amaroni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/24 14:58:41 by amaroni           #+#    #+#             */
-/*   Updated: 2020/12/07 19:24:51 by amaroni          ###   ########.fr       */
+/*   Updated: 2020/12/08 19:56:42 by amaroni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ static char		*invert_array(char *s)
 
 char			*ft_itoa(int n)
 {
-	long	new_n;
 	char	*src;
 	char	*dst;
 
@@ -68,21 +67,20 @@ char			*ft_itoa(int n)
 		return (ft_strdup("0"));
 	else if (n > 0)
 	{
-		new_n = n;
-		if (invert_array(int_to_inverted_array(new_n)) == NULL)
+		if (invert_array(int_to_inverted_array((long)(n))) == NULL)
 			return (NULL);
-		return (invert_array(int_to_inverted_array(new_n)));
+		return (invert_array(int_to_inverted_array((long)(n))));
 	}
 	else
 	{
-		new_n = -(long)(n);
-		if ((dst = invert_array(int_to_inverted_array(new_n))) == NULL)
+		if ((dst = invert_array(int_to_inverted_array(-(long)(n)))) == NULL)
 			return (NULL);
 		if ((src = (char*)malloc((ft_strlen(dst) + 2) * sizeof(char))) == NULL)
 			return (NULL);
 		*src = '-';
 		src[1] = '\0';
 		ft_strlcat(src, dst, ft_strlen(dst) + 2);
+		free(dst);
 		return (src);
 	}
 }
