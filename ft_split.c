@@ -6,7 +6,7 @@
 /*   By: amaroni <amaroni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 21:00:28 by amaroni           #+#    #+#             */
-/*   Updated: 2020/12/08 18:50:26 by amaroni          ###   ########.fr       */
+/*   Updated: 2020/12/09 20:01:08 by amaroni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ static int			split_the_copy(size_t len, char ***p_rt, char **p_scp)
 		}
 		i++;
 	}
-	(*p_rt)[y] = "\0";
+	(*p_rt)[y] = NULL;
 	return (1);
 }
 
