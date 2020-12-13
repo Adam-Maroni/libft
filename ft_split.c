@@ -6,7 +6,7 @@
 /*   By: amaroni <amaroni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 21:00:28 by amaroni           #+#    #+#             */
-/*   Updated: 2020/12/09 20:01:08 by amaroni          ###   ########.fr       */
+/*   Updated: 2020/12/13 16:36:32 by amaroni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static unsigned int	count_words(char *s, char c)
 	y = 0;
 	while (s[i])
 	{
-		if (s[i] != c && (s[i - 1] == c || i == 0))
+		if (s[i] != c && (i == 0 || s[i - 1] == c))
 			y++;
 		i++;
 	}

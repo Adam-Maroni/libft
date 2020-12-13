@@ -6,7 +6,7 @@
 /*   By: amaroni <amaroni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/20 12:10:08 by amaroni           #+#    #+#             */
-/*   Updated: 2020/12/01 13:40:40 by amaroni          ###   ########.fr       */
+/*   Updated: 2020/12/12 14:52:02 by amaroni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*ft_strrchr(char *s, int c)
 	i = 0;
 	while (*(s + i) != '\0')
 		i++;
-	while ((*(s + i) != (char)c) && (i >= 0))
+	while ((i > 0) && *(s + i) != (char)c)
 		i--;
 	if (*(s + i) == (char)c)
 		return (s + i);

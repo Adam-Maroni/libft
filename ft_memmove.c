@@ -6,7 +6,7 @@
 /*   By: amaroni <amaroni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/21 16:19:48 by amaroni           #+#    #+#             */
-/*   Updated: 2020/12/04 12:27:57 by amaroni          ###   ########.fr       */
+/*   Updated: 2020/12/12 22:38:02 by amaroni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,20 @@
 
 void	*ft_memmove(void *dest, void *src, size_t n)
 {
-	size_t	i;
-	char	*tmp;
+	char	*lastd;
+	char	*lasts;
+	char	*s;
+	char	*d;
 
-	i = 0;
-	if ((dest) || (src))
-	{
-		tmp = (char*)calloc(n + 1, sizeof(char));
-		ft_memcpy(tmp, src, n);
-		ft_memcpy(dest, tmp, n);
-		free(tmp);
-	}
+	s = src;
+	d = dest;
+	lastd = d + (n - 1);
+	lasts = s + (n - 1);
+	if (d < s)
+		while (n--)
+			*d++ = *s++;
+	else
+		while (n--)
+			*lastd-- = *lasts--;
 	return (dest);
 }

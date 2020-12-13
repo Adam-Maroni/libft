@@ -6,13 +6,13 @@
 /*   By: amaroni <amaroni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/21 18:14:29 by amaroni           #+#    #+#             */
-/*   Updated: 2020/12/02 16:53:51 by amaroni          ###   ########.fr       */
+/*   Updated: 2020/12/12 20:33:44 by amaroni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void	init_vars(int *i, int *y)
+static void	init_vars(size_t *i, int *y)
 {
 	*i = 0;
 	*y = 0;
@@ -20,14 +20,14 @@ static void	init_vars(int *i, int *y)
 
 char		*ft_strnstr(char *big, char *little, size_t len)
 {
-	int		i;
+	size_t	i;
 	int		y;
 	char	*first_occurence;
 
 	init_vars(&i, &y);
 	if (ft_strlen(little) == 0)
 		return (big);
-	while (i <= (int)len)
+	while ((i <= len) && (i <= ft_strlen(big)))
 	{
 		if (y == (int)ft_strlen(little))
 			return (first_occurence);
