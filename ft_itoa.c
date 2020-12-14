@@ -6,7 +6,7 @@
 /*   By: amaroni <amaroni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/24 14:58:41 by amaroni           #+#    #+#             */
-/*   Updated: 2020/12/13 20:12:45 by amaroni          ###   ########.fr       */
+/*   Updated: 2020/12/14 21:14:19 by amaroni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,6 @@ char			*ft_itoa(int n)
 		*src = '-';
 		src[1] = '\0';
 		ft_strlcat(src, dst, ft_strlen(dst) + 2);
-		free(dst);
 		return (src);
 	}
 }
