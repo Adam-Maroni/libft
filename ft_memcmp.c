@@ -6,7 +6,7 @@
 /*   By: amaroni <amaroni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 00:11:59 by amaroni           #+#    #+#             */
-/*   Updated: 2020/12/05 18:32:24 by amaroni          ###   ########.fr       */
+/*   Updated: 2020/12/16 21:54:51 by amaroni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,6 @@ int	ft_memcmp(void *s1, void *s2, size_t n)
 		i++;
 	if (i >= n)
 		return (0);
-	else if (c_s1[i] > c_s2[i])
-		return (1);
-	else if (c_s1[i] < c_s2[i])
-		return (-1);
 	else
-		return (0);
+		return ((int)(c_s1[i] - c_s2[i]));
 }
