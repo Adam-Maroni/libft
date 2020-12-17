@@ -6,7 +6,7 @@
 /*   By: amaroni <amaroni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 14:18:24 by amaroni           #+#    #+#             */
-/*   Updated: 2020/12/17 12:21:22 by amaroni          ###   ########.fr       */
+/*   Updated: 2020/12/17 16:08:26 by amaroni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,5 +62,5 @@ char		*ft_strtrim(char *s1, char *s2)
 		return (ft_substr(s1, (unsigned int)(start - s1),
 					(unsigned int)(end - start + 1)));
 	else
-		return ("");
+		return (ft_strdup(""));
 }
