@@ -2,3 +2,4 @@ notToCommit/a.out
 notToCommit/test.c
 *.so
 *.swp
+libft.a

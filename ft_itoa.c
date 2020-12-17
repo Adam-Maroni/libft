@@ -6,7 +6,7 @@
 /*   By: amaroni <amaroni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/24 14:58:41 by amaroni           #+#    #+#             */
-/*   Updated: 2020/12/14 21:14:19 by amaroni          ###   ########.fr       */
+/*   Updated: 2020/12/17 12:01:21 by amaroni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static char		*int_to_inverted_array(long n)
 	while ((memn /= 10) > 0)
 		cp++;
 	memn = n;
-	if ((rt = (char*)malloc((cp + 1) * sizeof(char))) == NULL)
+	if (!(rt = (char*)malloc((cp + 1) * sizeof(char))))
 		return (NULL);
 	*rt = '\0';
 	while (cp-- > 0)
@@ -34,6 +34,8 @@ static char		*int_to_inverted_array(long n)
 		ft_strlcat(rt, src, ft_strlen(rt) + 2);
 		memn /= 10;
 	}
+	if (!rt)
+		return (NULL);
 	return (rt);
 }
 
@@ -43,11 +45,11 @@ static char		*invert_array(char *s)
 	unsigned long		i;
 	char				*invs;
 
-	i = 0;
-	y = ft_strlen(s);
 	if (!s)
 		return (NULL);
-	if ((invs = (char*)malloc((ft_strlen(s) + 1) * sizeof(char))) == NULL)
+	i = 0;
+	y = ft_strlen(s);
+	if (!(invs = (char*)malloc((ft_strlen(s) + 1) * sizeof(char))))
 		return (NULL);
 	while (i < ft_strlen(s))
 	{

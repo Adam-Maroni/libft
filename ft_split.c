@@ -6,7 +6,7 @@
 /*   By: amaroni <amaroni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 21:00:28 by amaroni           #+#    #+#             */
-/*   Updated: 2020/12/13 16:36:32 by amaroni          ###   ########.fr       */
+/*   Updated: 2020/12/17 11:13:40 by amaroni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,8 @@ char				**ft_split(char *s, char c)
 	size_t	len;
 	char	*scp;
 
+	if (!s)
+		return (NULL);
 	if (!(rt = (char**)ft_calloc(count_words(s, c) + 1, sizeof(*rt)))
 			|| !(scp = ft_strdup(s)))
 		return (NULL);

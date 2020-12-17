@@ -6,7 +6,7 @@
 /*   By: amaroni <amaroni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/30 14:37:37 by amaroni           #+#    #+#             */
-/*   Updated: 2020/11/30 14:40:27 by amaroni          ###   ########.fr       */
+/*   Updated: 2020/12/17 11:24:58 by amaroni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,13 @@ void	ft_putstr_fd(char *s, int fd)
 {
 	int i;
 
-	i = 0;
-	while (s[i])
+	if (s)
 	{
-		write(fd, &s[i], sizeof(char));
-		i++;
+		i = 0;
+		while (s[i])
+		{
+			write(fd, &s[i], sizeof(char));
+			i++;
+		}
 	}
 }
