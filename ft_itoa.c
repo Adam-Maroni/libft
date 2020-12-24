@@ -6,7 +6,7 @@
 /*   By: amaroni <amaroni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/24 14:58:41 by amaroni           #+#    #+#             */
-/*   Updated: 2020/12/17 12:01:21 by amaroni          ###   ########.fr       */
+/*   Updated: 2020/12/24 16:19:33 by amaroni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,7 @@ static char		*int_to_inverted_array(long n)
 		ft_strlcat(rt, src, ft_strlen(rt) + 2);
 		memn /= 10;
 	}
-	if (!rt)
-		return (NULL);
-	return (rt);
+	return (rt ? rt : NULL);
 }
 
 static char		*invert_array(char *s)
@@ -57,6 +55,7 @@ static char		*invert_array(char *s)
 		i++;
 	}
 	invs[i] = '\0';
+	free(s);
 	return (invs);
 }
 
@@ -82,6 +81,7 @@ char			*ft_itoa(int n)
 		*src = '-';
 		src[1] = '\0';
 		ft_strlcat(src, dst, ft_strlen(dst) + 2);
+		free(dst);
 		return (src);
 	}
 }
