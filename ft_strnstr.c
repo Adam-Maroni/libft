@@ -6,7 +6,7 @@
 /*   By: amaroni <amaroni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/21 18:14:29 by amaroni           #+#    #+#             */
-/*   Updated: 2020/12/29 16:32:51 by amaroni          ###   ########.fr       */
+/*   Updated: 2020/12/29 16:34:41 by amaroni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@ char		*ft_strnstr(const char *big, const char *little, size_t len)
 
 	i = 0;
 	y = 0;
-	if (!big)
-		return (NULL);
 	if (!ft_strlen(little) || !(little))
 		return ((char*)big);
 	while ((i <= len) && (i <= ft_strlen(big)))

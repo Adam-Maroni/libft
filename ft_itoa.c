@@ -5,83 +5,55 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: amaroni <amaroni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/24 14:58:41 by amaroni           #+#    #+#             */
-/*   Updated: 2020/12/24 16:19:33 by amaroni          ###   ########.fr       */
+/*   Created: 2020/12/29 19:57:14 by amaroni           #+#    #+#             */
+/*   Updated: 2020/12/29 21:07:10 by amaroni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char		*int_to_inverted_array(long n)
+static int		count_digit(unsigned int n)
 {
-	long	memn;
-	int		cp;
-	char	*rt;
-	char	src[2];
+	int	cp;
 
-	memn = n;
 	cp = 1;
-	while ((memn /= 10) > 0)
+	while ((n /= 10) > 0)
 		cp++;
-	memn = n;
-	if (!(rt = (char*)malloc((cp + 1) * sizeof(char))))
-		return (NULL);
-	*rt = '\0';
-	while (cp-- > 0)
-	{
-		src[0] = (char)((memn % 10) + '0');
-		src[1] = '\0';
-		ft_strlcat(rt, src, ft_strlen(rt) + 2);
-		memn /= 10;
-	}
-	return (rt ? rt : NULL);
+	return (cp);
 }
 
-static char		*invert_array(char *s)
+static void		add_element(char *array, int i, int start, unsigned int n)
 {
-	unsigned long		y;
-	unsigned long		i;
-	char				*invs;
-
-	if (!s)
-		return (NULL);
-	i = 0;
-	y = ft_strlen(s);
-	if (!(invs = (char*)malloc((ft_strlen(s) + 1) * sizeof(char))))
-		return (NULL);
-	while (i < ft_strlen(s))
+	array[i] = '\0';
+	while (--i >= start)
 	{
-		*(invs + i) = *(s + --y);
-		i++;
+		array[i] = '0' + (char)(n % 10);
+		n /= 10;
 	}
-	invs[i] = '\0';
-	free(s);
-	return (invs);
 }
 
 char			*ft_itoa(int n)
 {
-	char	*src;
-	char	*dst;
+	char	*array;
 
 	if (n == 0)
 		return (ft_strdup("0"));
 	else if (n > 0)
 	{
-		if (invert_array(int_to_inverted_array((long)(n))) == NULL)
+		if (!(array = (char*)malloc((count_digit((unsigned int)(n)) + 1)
+						* sizeof(*array))))
 			return (NULL);
-		return (invert_array(int_to_inverted_array((long)(n))));
+		add_element(array, count_digit((unsigned int)(n)),
+				0, (unsigned int)(n));
 	}
 	else
 	{
-		if (!(dst = invert_array(int_to_inverted_array(-(long)(n)))))
+		if (!(array = (char*)malloc((count_digit((unsigned int)(-n)) + 2)
+						* sizeof(*array))))
 			return (NULL);
-		if (!(src = (char*)malloc((ft_strlen(dst) + 2) * sizeof(char))))
-			return (NULL);
-		*src = '-';
-		src[1] = '\0';
-		ft_strlcat(src, dst, ft_strlen(dst) + 2);
-		free(dst);
-		return (src);
+		add_element(array, count_digit((unsigned int)(-n)) + 1,
+				1, (unsigned int)(-n));
+		array[0] = '-';
 	}
+	return (array);
 }
