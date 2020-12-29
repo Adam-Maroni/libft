@@ -6,16 +6,16 @@
 /*   By: amaroni <amaroni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/21 18:14:29 by amaroni           #+#    #+#             */
-/*   Updated: 2020/12/24 17:19:50 by amaroni          ###   ########.fr       */
+/*   Updated: 2020/12/29 16:32:51 by amaroni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char		*ft_strnstr(char *big, char *little, size_t len)
+char		*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	size_t	i;
-	size_t	y;
+	size_t		i;
+	size_t		y;
 	char	*first_occurence;
 
 	i = 0;
@@ -23,7 +23,7 @@ char		*ft_strnstr(char *big, char *little, size_t len)
 	if (!big)
 		return (NULL);
 	if (!ft_strlen(little) || !(little))
-		return (big);
+		return ((char*)big);
 	while ((i <= len) && (i <= ft_strlen(big)))
 	{
 		if (y == ft_strlen(little))
@@ -31,7 +31,7 @@ char		*ft_strnstr(char *big, char *little, size_t len)
 		else if (*(big + i) == *(little + y))
 		{
 			if (y == 0)
-				first_occurence = (big + i);
+				first_occurence = (char*)(big + i);
 			y++;
 		}
 		else

@@ -6,7 +6,7 @@
 /*   By: amaroni <amaroni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/17 11:58:55 by amaroni           #+#    #+#             */
-/*   Updated: 2020/12/24 16:58:41 by amaroni          ###   ########.fr       */
+/*   Updated: 2020/12/29 16:25:07 by amaroni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void				*ft_memccpy(void *dest, void *src, int c, size_t n);
 void				*ft_memmove(void *dest, void *src, size_t n);
 void				*ft_memchr(void *s, int c, size_t n);
 int					ft_memcmp(void *s1, void *s2, size_t n);
-unsigned long		ft_strlen(char *s);
+unsigned long		ft_strlen(const char *s);
 int					ft_isalpha(int c);
 int					ft_isdigit(int c);
 int					ft_isalnum(int c);
@@ -41,7 +41,7 @@ char				*ft_strrchr(char *s, int c);
 int					ft_strncmp(char *s1, char *s2, size_t n);
 size_t				ft_strlcpy(char *dst, char *src, size_t size);
 size_t				ft_strlcat(char *dst, char *src, size_t size);
-char				*ft_strnstr(char *big, char *little, size_t len);
+char				*ft_strnstr(const char *big, const char *little, size_t len);
 int					ft_atoi(char *nptr);
 void				*ft_calloc(size_t nmemb, size_t size);
 char				*ft_strdup(char *s);
