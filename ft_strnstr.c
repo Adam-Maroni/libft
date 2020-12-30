@@ -6,7 +6,7 @@
 /*   By: amaroni <amaroni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/21 18:14:29 by amaroni           #+#    #+#             */
-/*   Updated: 2020/12/29 16:34:41 by amaroni          ###   ########.fr       */
+/*   Updated: 2020/12/30 22:17:51 by amaroni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 char		*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	size_t		i;
-	size_t		y;
+	size_t	i;
+	size_t	y;
 	char	*first_occurence;
 
 	i = 0;
