@@ -5,35 +5,37 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: amaroni <amaroni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/21 18:14:29 by amaroni           #+#    #+#             */
-/*   Updated: 2020/12/30 22:17:51 by amaroni          ###   ########.fr       */
+/*   Created: 2021/01/04 19:15:52 by amaroni           #+#    #+#             */
+/*   Updated: 2021/01/04 19:32:34 by amaroni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char		*ft_strnstr(const char *big, const char *little, size_t len)
+char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
 	size_t	i;
-	size_t	y;
-	char	*first_occurence;
+	int		y;
+	char	*p;
 
 	i = 0;
-	y = 0;
-	if (!ft_strlen(little) || !(little))
-		return ((char*)big);
-	while ((i <= len) && (i <= ft_strlen(big)))
+	p = 0;
+	if (little[i] == '\0')
+		return ((char *)(big));
+	while (big[i] != '\0' && i < len)
 	{
-		if (y == ft_strlen(little))
-			return (first_occurence);
-		else if (*(big + i) == *(little + y))
+		if (big[i] == little[0])
 		{
-			if (y == 0)
-				first_occurence = (char*)(big + i);
-			y++;
-		}
-		else
+			p = (char *)(big + i);
 			y = 0;
+			while (big[i + y] == little[y] && i + y < len)
+			{
+				if (little[y + 1] == '\0')
+					return (p);
+				y++;
+			}
+			p = 0;
+		}
 		i++;
 	}
 	return (NULL);

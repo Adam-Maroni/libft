@@ -7,7 +7,7 @@ SRC_BONUS = ft_lstadd_back.c  ft_lstclear.c  ft_lstiter.c ft_lstmap.c ft_lstsize
 OBJ_BONUS = $(SRC_BONUS:.c=.o)
 
 $(NAME):$(OBJ)
-	$(CC) -c $(SRC)
+	$(CC) -c $(FLAGS) $(SRC)
 	ar rc $(NAME) $(OBJ)
 	ranlib $(NAME)	
 
@@ -22,7 +22,7 @@ fclean: clean
 re: fclean all
 
 bonus:
-	$(CC) -c $(SRC_BONUS)
+	$(CC) -c $(FLAGS) $(SRC_BONUS)
 	ar rc $(NAME) $(OBJ_BONUS)
 	ranlib $(NAME)
 
