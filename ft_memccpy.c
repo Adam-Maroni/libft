@@ -5,28 +5,28 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: amaroni <amaroni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/20 13:34:26 by amaroni           #+#    #+#             */
-/*   Updated: 2020/12/04 10:40:39 by amaroni          ###   ########.fr       */
+/*   Created: 2021/01/05 14:33:59 by amaroni           #+#    #+#             */
+/*   Updated: 2021/01/05 14:36:07 by amaroni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memccpy(void *dest, void *src, int c, size_t n)
+void	*ft_memccpy(void *dest, const void *src, int c, size_t n)
 {
-	size_t i;
+	unsigned int	i;
+	unsigned char	*dest_char;
+	unsigned char	*src_char;
 
 	i = 0;
-	while ((i < n) && *((unsigned char*)src + i) != (unsigned char)c)
+	dest_char = (unsigned char *)dest;
+	src_char = (unsigned char *)src;
+	while (i < n)
 	{
-		*((unsigned char*)dest + i) = *((unsigned char*)src + i);
+		dest_char[i] = src_char[i];
+		if (src_char[i] == (unsigned char)c)
+			return ((void *)&dest_char[i + 1]);
 		i++;
 	}
-	if (*((unsigned char*)src + i) == (unsigned char)c)
-	{
-		*((unsigned char*)dest + i) = *((unsigned char*)src + i);
-		return (dest + (i + 1));
-	}
-	else
-		return (NULL);
+	return (NULL);
 }

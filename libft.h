@@ -6,7 +6,7 @@
 /*   By: amaroni <amaroni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/17 11:58:55 by amaroni           #+#    #+#             */
-/*   Updated: 2020/12/30 22:23:10 by amaroni          ###   ########.fr       */
+/*   Updated: 2021/01/05 14:40:08 by amaroni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ typedef struct		s_list
 void				*ft_memset(void *s, int c, int n);
 void				ft_bzero(void *s, size_t n);
 void				*ft_memcpy(void *dest, void *src, int n);
-void				*ft_memccpy(void *dest, void *src, int c, size_t n);
+void				*ft_memccpy(void *dest, const void *src, int c, size_t n);
 void				*ft_memmove(void *dest, void *src, size_t n);
 void				*ft_memchr(void *s, int c, size_t n);
 int					ft_memcmp(void *s1, void *s2, size_t n);
