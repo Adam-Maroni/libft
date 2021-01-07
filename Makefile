@@ -6,8 +6,10 @@ OBJ = $(SRC:.c=.o)
 SRC_BONUS = ft_lstadd_back.c  ft_lstclear.c  ft_lstiter.c ft_lstmap.c ft_lstsize.c ft_lstadd_front.c ft_lstdelone.c ft_lstlast.c ft_lstnew.c
 OBJ_BONUS = $(SRC_BONUS:.c=.o)
 
+%.o: %.c
+		$(CC) $? -c $(FLAGS) -o $@
+
 $(NAME):$(OBJ)
-	$(CC) -c $(FLAGS) $(SRC)
 	ar rc $(NAME) $(OBJ)
 	ranlib $(NAME)	
 

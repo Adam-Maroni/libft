@@ -43,6 +43,15 @@ static void			array_with_0(char **scp, char c)
 	}
 }
 
+static void			free_mem(void *start, void *end)
+{
+	while (start < end)
+	{
+		free(start);
+		start++;
+	}
+}
+
 static int			split_the_copy(size_t len, char ***p_rt, char **p_scp)
 {
 	size_t	i;
@@ -58,7 +67,10 @@ static int			split_the_copy(size_t len, char ***p_rt, char **p_scp)
 		{
 			if (!((*p_rt)[y] = (char*)ft_calloc(ft_strlen(ele) + 1
 							, sizeof(*(*p_rt)[y]))))
+			{
+				free_mem(&((*p_rt)[0]), &((*p_rt)[y]));
 				return (0);
+			}
 			ft_strlcpy((*p_rt)[y], ele, ft_strlen(ele) + 2);
 			y++;
 			i += ft_strlen(ele) - 1;
