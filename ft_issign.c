@@ -1,25 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_issign.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amaroni <amaroni@student.42.fr>            +#+  +:+       +#+        */
+/*   By: amaroni <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/20 11:46:54 by amaroni           #+#    #+#             */
-/*   Updated: 2021/03/22 15:08:54 by amaroni          ###   ########.fr       */
+/*   Created: 2021/02/17 12:26:21 by amaroni           #+#    #+#             */
+/*   Updated: 2021/03/21 20:48:42 by amaroni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen(const char *s)
+int	ft_issign(char c)
 {
-	size_t	rt;
-
-	rt = 0;
-	if (!s)
-		return (rt);
-	while (*(s + rt) != '\0')
-		rt++;
-	return (rt);
+	if (c == '+')
+		return (1);
+	else if (c == '-')
+		return (-1);
+	else
+		return (0);
 }

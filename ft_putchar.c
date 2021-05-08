@@ -1,25 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amaroni <amaroni@student.42.fr>            +#+  +:+       +#+        */
+/*   By: amaroni <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/20 11:46:54 by amaroni           #+#    #+#             */
-/*   Updated: 2021/03/22 15:08:54 by amaroni          ###   ########.fr       */
+/*   Created: 2021/02/13 09:49:40 by amaroni           #+#    #+#             */
+/*   Updated: 2021/02/13 09:50:15 by amaroni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen(const char *s)
+void	ft_putchar(char c)
 {
-	size_t	rt;
-
-	rt = 0;
-	if (!s)
-		return (rt);
-	while (*(s + rt) != '\0')
-		rt++;
-	return (rt);
+	write(1, &c, 1);
 }

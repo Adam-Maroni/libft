@@ -1,25 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_putstr_ret.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amaroni <amaroni@student.42.fr>            +#+  +:+       +#+        */
+/*   By: amaroni <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/20 11:46:54 by amaroni           #+#    #+#             */
-/*   Updated: 2021/03/22 15:08:54 by amaroni          ###   ########.fr       */
+/*   Created: 2021/03/18 08:26:12 by amaroni           #+#    #+#             */
+/*   Updated: 2021/03/22 14:29:52 by amaroni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen(const char *s)
+int	ft_putstr_ret(const char *string)
 {
-	size_t	rt;
+	size_t ret;
 
-	rt = 0;
-	if (!s)
-		return (rt);
-	while (*(s + rt) != '\0')
-		rt++;
-	return (rt);
+	if (!string)
+		return (0);
+	ret = ft_strlen(string);
+	ft_putstr(string);
+	return (ret);
 }

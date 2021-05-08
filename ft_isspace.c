@@ -1,25 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_isspace.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amaroni <amaroni@student.42.fr>            +#+  +:+       +#+        */
+/*   By: amaroni <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/20 11:46:54 by amaroni           #+#    #+#             */
-/*   Updated: 2021/03/22 15:08:54 by amaroni          ###   ########.fr       */
+/*   Created: 2021/02/13 10:07:49 by amaroni           #+#    #+#             */
+/*   Updated: 2021/02/13 10:08:38 by amaroni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen(const char *s)
+int		ft_isspace(int c)
 {
-	size_t	rt;
-
-	rt = 0;
-	if (!s)
-		return (rt);
-	while (*(s + rt) != '\0')
-		rt++;
-	return (rt);
+	c = (unsigned char)c;
+	if (c == '\t' || c == '\n' || c == '\v' || c == '\f' || c == '\r'
+		|| c == ' ')
+		return (1);
+	return (0);
 }

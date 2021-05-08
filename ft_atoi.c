@@ -12,33 +12,6 @@
 
 #include "libft.h"
 
-static int	ft_isspace(int c)
-{
-	unsigned char c_c;
-
-	c_c = (unsigned char)(c);
-	if (
-			(c_c != '\f') &&
-			(c_c != '\n') &&
-			(c_c != '\t') &&
-			(c_c != '\r') &&
-			(c_c != '\v') &&
-			(c_c != ' '))
-		return (0);
-	else
-		return (1);
-}
-
-static int	ft_issign(char c)
-{
-	if (c == '+')
-		return (1);
-	else if (c == '-')
-		return (-1);
-	else
-		return (0);
-}
-
 int			ft_atoi(char *nptr)
 {
 	unsigned long	x10;
