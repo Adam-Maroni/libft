@@ -1,28 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_atoll.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amaroni <amaroni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/30 14:37:37 by amaroni           #+#    #+#             */
-/*   Updated: 2021/10/24 18:48:12 by amaroni          ###   ########.fr       */
+/*   Created: 2020/11/22 11:24:04 by amaroni           #+#    #+#             */
+/*   Updated: 2021/10/24 18:14:17 by amaroni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putstr_fd(char *s, int fd)
+long long	ft_atoll(char *nptr)
 {
-	int	i;
+	unsigned long	x10;
+	int				sign;
+	long long		rt;
 
-	if (s)
+	rt = 0;
+	x10 = 1;
+	sign = 1;
+	while (ft_isspace((int)(*nptr)) != 0)
+		nptr++;
+	if (ft_issign(*nptr) != 0)
 	{
-		i = 0;
-		while (s[i])
-		{
-			write(fd, &s[i], sizeof(char));
-			i++;
-		}
+		sign = ft_issign(*nptr);
+		nptr++;
 	}
+	while (ft_isdigit(nptr[(int)(rt++)]) != 0)
+		x10 *= 10;
+	rt = 0;
+	x10 /= 10;
+	while (ft_isdigit(*nptr) != 0)
+	{
+		rt += ((*nptr) - '0') * (x10);
+		x10 /= 10;
+		nptr++;
+	}
+	return ((rt) * sign);
 }
